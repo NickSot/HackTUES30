@@ -59,7 +59,8 @@ namespace GoodGuysCommunity.Web.Controllers
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
                 IsEmailConfirmed = user.EmailConfirmed,
-                StatusMessage = this.StatusMessage
+                StatusMessage = this.StatusMessage,
+                StreamKey = user.StreamKey
             };
 
             return this.View(model);

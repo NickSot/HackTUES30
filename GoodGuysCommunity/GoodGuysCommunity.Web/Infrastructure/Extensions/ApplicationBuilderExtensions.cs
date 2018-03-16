@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
@@ -35,7 +36,6 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
 
                             await userManager.CreateAsync(dummyuser, "admin12");
                         }
-
 
 
  						if (!db.ResourceFolders.Any())

@@ -6,13 +6,16 @@
     prevPath = prevPath.Substring(0, index >= 0 ? index : 0);
     prevPath += "/";
 }
-<div>You are in: @Model.Name <a href="/resources/browse?path=@prevPath">Back</a></div>
+<div>You are in: @Model.Path <a href="/resources/browse?path=@prevPath">Back</a></div>
+<br/>
+ADD FOLDER
 <form action="/resources/manage/addfolder" method="post">
     Name: <input type="text" name="name" />
     <input type="hidden" name="currentpath" value="@Model.Path" />
     <input type="submit" value="Add folder" />
 </form>
 <br/>
+ADD RESOURCE
 <form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
     Resource: <input type="file" name="file" />
     <input type="hidden" name="currentpath" value="@Model.Path" />
