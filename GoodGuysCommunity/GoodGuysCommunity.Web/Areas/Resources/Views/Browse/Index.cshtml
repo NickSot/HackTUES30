@@ -11,14 +11,14 @@
 ADD FOLDER
 <form action="/resources/manage/addfolder" method="post">
     Name: <input type="text" name="name" />
-    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input type="hidden" name="currentpath" value="@Model.Path" required/>
     <input type="submit" value="Add folder" />
 </form>
 <br/>
 ADD RESOURCE
 <form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
     Resource: <input type="file" name="file" />
-    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input type="hidden" name="currentpath" value="@Model.Path"required />
     <input type="submit" value="Add resource" />
 </form>
 <br />
