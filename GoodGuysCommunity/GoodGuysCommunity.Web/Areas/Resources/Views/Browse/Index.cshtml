@@ -1,1 +1,14 @@
-﻿
+﻿@model ResourceFolderViewModel
+
+<div>You are in: @Model.Name</div>
+
+<ul>
+    @foreach (var subfolder in Model.Children)
+    {
+        <li><a href="/resources/browse?path=@subfolder.Path">Folder</a> - @subfolder.Name</li>
+    }
+    @foreach (var resource in Model.Resources)
+    {
+        <li>Resource - @resource.Name</li>
+    }
+</ul>

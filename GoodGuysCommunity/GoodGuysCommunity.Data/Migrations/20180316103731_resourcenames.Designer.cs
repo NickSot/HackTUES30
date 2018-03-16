@@ -11,9 +11,10 @@ using System;
 namespace GoodGuysCommunity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180316103731_resourcenames")]
+    partial class resourcenames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,11 +100,7 @@ namespace GoodGuysCommunity.Data.Migrations
 
                     b.Property<DateTime>("LastModified");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.Property<string>("Path")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
 

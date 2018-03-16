@@ -301,7 +301,7 @@ namespace GoodGuysCommunity.Web.Controllers
         {
             if (this.ModelState.IsValid)
             {
-                // Get the information about the user from the external login provider
+                // GetAsync the information about the user from the external login provider
                 var info = await this.signInManager.GetExternalLoginInfoAsync();
                 if (info == null)
                 {

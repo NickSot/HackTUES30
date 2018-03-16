@@ -1,4 +1,5 @@
-﻿using GoodGuysCommunity.Data;
+﻿using AutoMapper;
+using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
@@ -9,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using IConfiguration = Microsoft.Extensions.Configuration.IConfiguration;
 
 namespace GoodGuysCommunity.Web
 {
@@ -34,6 +36,8 @@ namespace GoodGuysCommunity.Web
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IPostService, PostService>();
+            services.AddTransient<IResourceManager, ResourceManager>();
+            services.AddAutoMapper();
 
             services.AddMvc();
         }

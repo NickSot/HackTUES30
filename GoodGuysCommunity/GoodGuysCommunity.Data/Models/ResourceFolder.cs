@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using GoodGuysCommunity.Data.Relations;
 
 namespace GoodGuysCommunity.Data.Models
@@ -8,7 +9,11 @@ namespace GoodGuysCommunity.Data.Models
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
+
+        [Required]
+        public string Path { get; set; }
 
         public DateTime LastModified { get; set; }
 
