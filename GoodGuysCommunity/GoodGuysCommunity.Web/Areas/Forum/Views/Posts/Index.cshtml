@@ -4,5 +4,8 @@
 <a href="/forum/posts/createpost">Make a post!!!</a>
 
 <ul>
-<li></li>
+    @foreach (var post in Model)
+    {
+        <li>@post.Name</li>
+    }
 </ul>

@@ -7,6 +7,7 @@ using GoodGuysCommunity.Web.Areas.Forum.Models;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
+using GoodGuysCommunity.Data.Models;
 
 namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
 {
