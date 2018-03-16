@@ -18,5 +18,20 @@ namespace GoodGuysCommunity.Services
         {
             return this.db.Posts.AsQueryable();
         }
+
+        public void Add(string Name, string Content, string AuthorId) {
+            this.db.Add(new Post()
+            {
+                Name = Name,
+                Content = Content,
+                AuthorId = AuthorId
+                
+            });
+        }
+
+        public void Update() {
+            this.db.SaveChanges();
+        }
+
     }
 }
