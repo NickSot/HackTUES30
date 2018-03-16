@@ -9,8 +9,10 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
         }
 
         [HttpPost]
-        public void Index(string Content) {
+        public IActionResult Index(string Content, string AuthorId, int PostId) {
 
+
+            return RedirectToAction("Details", "Posts");
         }
     }
 }
