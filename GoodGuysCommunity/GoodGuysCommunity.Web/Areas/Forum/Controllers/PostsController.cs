@@ -45,5 +45,9 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
             this.postsService.Update();
             return this.RedirectToAction("Index", "Posts");
         }
+
+        public IActionResult Details(PostListViewModel model) {
+            return View(model);
+        }
     }
 }
