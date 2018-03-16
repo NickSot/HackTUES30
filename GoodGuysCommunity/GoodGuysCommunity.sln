@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodGuysCommunity.Web", "GoodGuysCommunity.Web\GoodGuysCommunity.Web.csproj", "{584FD443-24E4-44A1-BEA5-1475B4A55B2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodGuysCommunity.Web", "GoodGuysCommunity.Web\GoodGuysCommunity.Web.csproj", "{584FD443-24E4-44A1-BEA5-1475B4A55B2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodGuysCommunity.Data", "GoodGuysCommunity.Data\GoodGuysCommunity.Data.csproj", "{D33FB08D-5064-45D0-AF44-D8F87675770D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodGuysCommunity.Data", "GoodGuysCommunity.Data\GoodGuysCommunity.Data.csproj", "{D33FB08D-5064-45D0-AF44-D8F87675770D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodGuysCommunity.Services", "GoodGuysCommunity.Services\GoodGuysCommunity.Services.csproj", "{9644AAD9-32E9-4019-B141-BF337B4E0A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoodGuysCommunity.Services", "GoodGuysCommunity.Services\GoodGuysCommunity.Services.csproj", "{9644AAD9-32E9-4019-B141-BF337B4E0A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

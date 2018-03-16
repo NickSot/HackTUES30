@@ -31,6 +31,7 @@ namespace GoodGuysCommunity.Web
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IPostService, PostService>();
 
             services.AddMvc();
         }
