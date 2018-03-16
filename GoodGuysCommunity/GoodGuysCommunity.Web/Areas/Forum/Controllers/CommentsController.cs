@@ -7,5 +7,10 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
         public IActionResult Index() {
             return View();
         }
+
+        [HttpPost]
+        public void Index(string Content) {
+
+        }
     }
 }
