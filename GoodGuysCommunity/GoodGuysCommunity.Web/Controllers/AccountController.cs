@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using GoodGuysCommunity.Data;
+using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services.Interfaces;
 using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication;

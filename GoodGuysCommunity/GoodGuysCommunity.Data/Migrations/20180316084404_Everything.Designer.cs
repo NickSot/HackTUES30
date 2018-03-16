@@ -11,8 +11,8 @@ using System;
 namespace GoodGuysCommunity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180316064416_UploadDatesAndResources")]
-    partial class UploadDatesAndResources
+    [Migration("20180316084404_Everything")]
+    partial class Everything
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace GoodGuysCommunity.Data.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.Comment", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -44,7 +44,7 @@ namespace GoodGuysCommunity.Data.Migrations
                     b.ToTable("Comment");
                 });
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.Post", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.Post", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -67,7 +67,7 @@ namespace GoodGuysCommunity.Data.Migrations
                     b.ToTable("Posts");
                 });
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.Resource", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.Resource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -77,16 +77,34 @@ namespace GoodGuysCommunity.Data.Migrations
                     b.Property<string>("FilePath")
                         .IsRequired();
 
+                    b.Property<int>("FolderId");
+
                     b.Property<DateTime>("UploadDate");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
-                    b.ToTable("Resource");
+                    b.HasIndex("FolderId");
+
+                    b.ToTable("Resources");
                 });
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.User", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.ResourceFolder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("LastModified");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ResourceFolders");
+                });
+
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
@@ -135,6 +153,19 @@ namespace GoodGuysCommunity.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("GoodGuysCommunity.Data.Relations.ResourceFolderChild", b =>
+                {
+                    b.Property<int>("ChildId");
+
+                    b.Property<int>("FolderId");
+
+                    b.HasKey("ChildId", "FolderId");
+
+                    b.HasIndex("FolderId");
+
+                    b.ToTable("ResourceFolderChild");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -245,30 +276,48 @@ namespace GoodGuysCommunity.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.Comment", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.Comment", b =>
                 {
-                    b.HasOne("GoodGuysCommunity.Data.User", "Author")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User", "Author")
                         .WithMany("Comments")
                         .HasForeignKey("AuthorId");
 
-                    b.HasOne("GoodGuysCommunity.Data.Post", "Post")
+                    b.HasOne("GoodGuysCommunity.Data.Models.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.Post", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.Post", b =>
                 {
-                    b.HasOne("GoodGuysCommunity.Data.User", "Author")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User", "Author")
                         .WithMany("Posts")
                         .HasForeignKey("AuthorId");
                 });
 
-            modelBuilder.Entity("GoodGuysCommunity.Data.Resource", b =>
+            modelBuilder.Entity("GoodGuysCommunity.Data.Models.Resource", b =>
                 {
-                    b.HasOne("GoodGuysCommunity.Data.User", "Author")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User", "Author")
                         .WithMany("Uploads")
                         .HasForeignKey("AuthorId");
+
+                    b.HasOne("GoodGuysCommunity.Data.Models.ResourceFolder", "ResourceFolder")
+                        .WithMany("Resources")
+                        .HasForeignKey("FolderId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("GoodGuysCommunity.Data.Relations.ResourceFolderChild", b =>
+                {
+                    b.HasOne("GoodGuysCommunity.Data.Models.ResourceFolder", "Child")
+                        .WithMany()
+                        .HasForeignKey("ChildId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("GoodGuysCommunity.Data.Models.ResourceFolder", "Folder")
+                        .WithMany("SubFolders")
+                        .HasForeignKey("FolderId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -281,7 +330,7 @@ namespace GoodGuysCommunity.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("GoodGuysCommunity.Data.User")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -289,7 +338,7 @@ namespace GoodGuysCommunity.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("GoodGuysCommunity.Data.User")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -302,7 +351,7 @@ namespace GoodGuysCommunity.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("GoodGuysCommunity.Data.User")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -310,7 +359,7 @@ namespace GoodGuysCommunity.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("GoodGuysCommunity.Data.User")
+                    b.HasOne("GoodGuysCommunity.Data.Models.User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

@@ -1,6 +1,8 @@
 ﻿using GoodGuysCommunity.Data;
+using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
+using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -52,6 +54,7 @@ namespace GoodGuysCommunity.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
+            app.UseDatabaseMigration();
 
             app.UseMvc(routes =>
             {

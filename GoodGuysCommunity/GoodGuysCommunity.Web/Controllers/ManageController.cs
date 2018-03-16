@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using GoodGuysCommunity.Data;
+using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services.Interfaces;
 using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication;
