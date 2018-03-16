@@ -8,7 +8,7 @@ namespace GoodGuysCommunity.Services
 {
     public class PostService: IPostService
     {
-        private ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
 
         public PostService(ApplicationDbContext db) {
             this.db = db;

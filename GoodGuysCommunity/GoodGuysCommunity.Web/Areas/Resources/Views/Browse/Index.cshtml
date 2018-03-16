@@ -1,12 +1,27 @@
 ﻿@model ResourceFolderViewModel
+@{
+    var lenght = Model.Path.Length - 2;
+    var prevPath = Model.Path.Substring(0, lenght >= 0 ? lenght : 0);
+    var index = prevPath.LastIndexOf("/", StringComparison.Ordinal);
+    prevPath = prevPath.Substring(0, index >= 0 ? index : 0);
+    prevPath += "/";
+}
+<div>You are in: @Model.Name <a href="/resources/browse?path=@prevPath">Back</a></div>
+<form action="/resources/manage/addfolder" method="post">
+    Name: <input type="text" name="name" />
+    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input type="submit" value="Add folder" />
+</form>
 
-<div>You are in: @Model.Name</div>
 
 <ul>
     @foreach (var subfolder in Model.Children)
     {
         <li><a href="/resources/browse?path=@subfolder.Path">Folder</a> - @subfolder.Name</li>
     }
+</ul>
+
+<ul>
     @foreach (var resource in Model.Resources)
     {
         <li>Resource - @resource.Name</li>

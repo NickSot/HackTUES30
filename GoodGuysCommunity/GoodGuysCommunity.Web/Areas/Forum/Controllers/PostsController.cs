@@ -13,13 +13,13 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
 {
     public class PostsController : ForumBaseController
     {
-        private IPostService postsService;
-        private UserManager<User> userManager;
+        private readonly IPostService postsService;
+        private readonly UserManager<User> userManager;
 
-        public PostsController(IPostService posts, UserManager<User> UserManager)
+        public PostsController(IPostService posts, UserManager<User> userManager)
         {
             this.postsService = posts;
-            this.userManager = UserManager;
+            this.userManager = userManager;
         }
         
         public IActionResult Index()
@@ -30,12 +30,12 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
                 Name = p.Name
             });
 
-            return View(model);
+            return this.View(model);
         }
 
         public IActionResult CreatePost()
         {
-            return View();
+            return this.View();
         }
 
         [HttpPost]
@@ -43,7 +43,7 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
             var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
             this.postsService.Add(model.Name, model.Content, user.Id);
             this.postsService.Update();
-            return RedirectToAction("Index", "Posts");
+            return this.RedirectToAction("Index", "Posts");
         }
     }
 }
