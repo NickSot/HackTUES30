@@ -18,7 +18,7 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var db = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                //db.Database.Migrate();
+                db.Database.Migrate();
 
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 //var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
@@ -47,15 +47,6 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
                         if (!db.ResourceFolders.Any())
                         {
                             var folder = new ResourceFolder() { Name = "Everything", LastModified = DateTime.Now, Path = "/" };
-                            folder.Resources.Add(new Resource() { Author = dummyuser, Name = "asd", FilePath = "/asd.txt" });
-                            var inner = new ResourceFolder()
-                            {
-                                Name = "Inner",
-                                Path = "/Inner",
-                                LastModified = DateTime.Now
-                            };
-                            inner.Resources.Add(new Resource() { Author = dummyuser, Name = "asdd", FilePath = "/inner/asd.txt" });
-                            folder.SubFolders.Add(new ResourceFolderChild() { Child = inner });
                             db.ResourceFolders.Add(folder);
                         }
 

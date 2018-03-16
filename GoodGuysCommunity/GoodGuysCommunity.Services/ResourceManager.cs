@@ -42,10 +42,13 @@ namespace GoodGuysCommunity.Services
                 Path = currentPath + $"{name}/"
             };
 
+
             var parent = await this.db.ResourceFolders.FirstOrDefaultAsync(f => f.Path == currentPath);
             parent.SubFolders.Add(new ResourceFolderChild() { Child = folder });
 
             await this.db.SaveChangesAsync();
+            var resourcesPath = this.appEnvironment.WebRootPath + "/resources";
+            Directory.CreateDirectory(resourcesPath + folder.Path);
         }
 
         public async Task AddResourceAsync(string currentPath, string name, string extension, byte[] bytes)
@@ -60,7 +63,8 @@ namespace GoodGuysCommunity.Services
             var folder = await this.db.ResourceFolders.FirstOrDefaultAsync(f => f.Path == currentPath);
             folder.Resources.Add(resource);
 
-            using (var file = File.Create(this.appEnvironment.WebRootPath + "/resources/" + currentPath + name))
+            var resourcesPath = "/resources" + currentPath + name;
+            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath))
             {
                 await file.WriteAsync(bytes, 0, bytes.Length);
             }
