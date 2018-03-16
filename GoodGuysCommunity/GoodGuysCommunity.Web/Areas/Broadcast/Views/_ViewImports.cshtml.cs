@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace GoodGuysCommunity.Web.Areas.Resources.Views
+namespace GoodGuysCommunity.Web.Areas.Broadcast.Views
 {
-    public class _ViewStartModel : PageModel
+    public class _ViewImportsModel : PageModel
     {
         public void OnGet()
         {

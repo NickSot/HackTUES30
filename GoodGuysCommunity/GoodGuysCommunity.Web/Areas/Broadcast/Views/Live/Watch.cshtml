@@ -1,0 +1,46 @@
+﻿@*the flash livestream video*@
+@Model
+<script language="javascript">AC_FL_RunContent = 0;</script>
+<script src="/js/AC_RunActiveContent.js" language="javascript"></script>
+
+<div class="span-16">
+    <script language="javascript">
+        if (AC_FL_RunContent == 0) {
+            alert("This page requires AC_RunActiveContent.js.");
+        } else {
+            AC_FL_RunContent(
+                'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,0,0',
+                'width', '636',
+                'height', '470',
+                'src', 'live',
+                'quality', 'high',
+                'pluginspage', 'http://www.macromedia.com/go/getflashplayer',
+                'align', 'middle',
+                'play', 'true',
+                'loop', 'true',
+                'scale', 'showall',
+                'wmode', 'window',
+                'devicefont', 'false',
+                'id', 'live',
+                'bgcolor', '#000000',
+                'name', 'live',
+                'menu', 'true',
+                'allowFullScreen', 'true',
+                'allowScriptAccess', 'sameDomain',
+                'movie', 'live',
+                'salign', ''
+            ); //end AC code
+        }
+    </script>
+</div>
+
+<script>
+    let a = document.getElementsByTagName("embed")[0];
+    let b = a.src;
+    b = b.substr(b.lastIndexOf("/"), b.lenght);
+    a.src = "/flash" + b;
+    console.log(b);
+</script>
+@*end of flash stream*@
+
+
