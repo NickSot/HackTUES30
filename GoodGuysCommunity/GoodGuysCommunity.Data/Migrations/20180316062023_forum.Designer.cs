@@ -11,9 +11,10 @@ using System;
 namespace GoodGuysCommunity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180316062023_forum")]
+    partial class forum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +27,6 @@ namespace GoodGuysCommunity.Data.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("AuthorId");
-
-                    b.Property<DateTime>("CommentDate");
 
                     b.Property<string>("Content")
                         .IsRequired();
@@ -57,32 +56,11 @@ namespace GoodGuysCommunity.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<DateTime>("PostDate");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Posts");
-                });
-
-            modelBuilder.Entity("GoodGuysCommunity.Data.Resource", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("AuthorId");
-
-                    b.Property<string>("FilePath")
-                        .IsRequired();
-
-                    b.Property<DateTime>("UploadDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.ToTable("Resource");
                 });
 
             modelBuilder.Entity("GoodGuysCommunity.Data.User", b =>
@@ -260,13 +238,6 @@ namespace GoodGuysCommunity.Data.Migrations
                 {
                     b.HasOne("GoodGuysCommunity.Data.User", "Author")
                         .WithMany("Posts")
-                        .HasForeignKey("AuthorId");
-                });
-
-            modelBuilder.Entity("GoodGuysCommunity.Data.Resource", b =>
-                {
-                    b.HasOne("GoodGuysCommunity.Data.User", "Author")
-                        .WithMany("Uploads")
                         .HasForeignKey("AuthorId");
                 });
 

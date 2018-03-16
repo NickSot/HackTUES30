@@ -22,4 +22,8 @@
     <ProjectReference Include="..\GoodGuysCommunity.Services\GoodGuysCommunity.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\resources\" />
+  </ItemGroup>
+
 </Project>
