@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 {
     [Area("Resources")]
-    public class ResourcesBaseController : Controller
+    [Authorize]
+    public abstract class ResourcesBaseController : Controller
     {
     }
 }

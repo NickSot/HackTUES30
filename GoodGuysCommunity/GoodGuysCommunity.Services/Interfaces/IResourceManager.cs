@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GoodGuysCommunity.Data.Models;
 
 namespace GoodGuysCommunity.Services.Interfaces
@@ -8,5 +7,7 @@ namespace GoodGuysCommunity.Services.Interfaces
     {
         //IEnumerable<R> GetResources();
         Task<ResourceFolder> GetAsync(string path);
+        Task AddFolderAsync(string currentPath, string name);
+        Task AddResourceAsync(string currentPath, string name, string extension, byte[] bytes);
     }
 }

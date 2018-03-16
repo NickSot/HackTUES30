@@ -25,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Areas\Resources\Views\Browse\" />
-    <Folder Include="wwwroot\resources\" />
   </ItemGroup>
 
 </Project>
