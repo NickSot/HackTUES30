@@ -6,30 +6,35 @@
     prevPath = prevPath.Substring(0, index >= 0 ? index : 0);
     prevPath += "/";
 }
-<div>You are in: @Model.Name <a href="/resources/browse?path=@prevPath">Back</a></div>
+<body style="background-color: #edeaf2;">
+<div><h3>You are in: @Model.Name</h3> <a href="/resources/browse?path=@prevPath"><button type="button" class="btn btn-danger">Back</button></a></div>
 <form action="/resources/manage/addfolder" method="post">
-    Name: <input type="text" name="name" />
+    <input type="text" name="name"placeholder="Input name" />
     <input type="hidden" name="currentpath" value="@Model.Path" />
-    <input type="submit" value="Add folder" />
+    <input class="btns" type="submit" value="Add folder" />
 </form>
-<br/>
-<form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
-    Resource: <input type="file" name="file" />
+
+<form action="/resources/manage/addresource" method="post" style = "text-align:center;" enctype="multipart/form-data">
+    <center><input type="file" name="file" placeholder="Choose File"/></center>
     <input type="hidden" name="currentpath" value="@Model.Path" />
-    <input type="submit" value="Add resource" />
+    <input class="btns" type="submit" value="Add resource" />
 </form>
+    <h3 style="text-align:center;">Resources:</h3>
 <br />
+    <center>
+    <div id="idfolder">
+        <ul style="display:inline;">
+            @foreach (var subfolder in Model.Children)
+            {
+                <li><a href="/resources/browse?path=@subfolder.Path"><button type="button" class="butresults"><i class="far fa-file" style="margin-right:10px;"></i>Folder - @subfolder.Name</button></a></li>
+    
+            }
+        </ul>
 
-<ul>
-    @foreach (var subfolder in Model.Children)
-    {
-        <li><a href="/resources/browse?path=@subfolder.Path">Folder</a> - @subfolder.Name</li>
-    }
-</ul>
-
-<ul>
-    @foreach (var resource in Model.Resources)
-    {
-        <li>Resource - @resource.Name</li>
-    }
-</ul>
+        <ul>
+            @foreach (var resource in Model.Resources)
+            {
+                <li>"Resource - @resource.Name</li>
+            }
+        </ul>
+    </div></center></body>
