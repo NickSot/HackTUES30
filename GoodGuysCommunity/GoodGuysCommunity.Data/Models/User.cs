@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GoodGuysCommunity.Data.Models;
 using Microsoft.AspNetCore.Identity;
 
 namespace GoodGuysCommunity.Data

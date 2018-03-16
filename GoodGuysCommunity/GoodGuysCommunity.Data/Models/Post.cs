@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using GoodGuysCommunity.Data.Models;
 
 namespace GoodGuysCommunity.Data
 {
