@@ -2,7 +2,7 @@
 using GoodGuysCommunity.Services.Interfaces;
 using System.Linq;
 using GoodGuysCommunity.Data.Models;
-
+using System;
 
 namespace GoodGuysCommunity.Services
 {
@@ -24,7 +24,8 @@ namespace GoodGuysCommunity.Services
             {
                 Name = Name,
                 Content = Content,
-                AuthorId = AuthorId
+                AuthorId = AuthorId,
+                PostDate = DateTime.Now
                 
             });
         }

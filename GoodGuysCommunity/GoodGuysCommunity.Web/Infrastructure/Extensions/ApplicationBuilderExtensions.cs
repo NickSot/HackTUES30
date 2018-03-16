@@ -6,6 +6,7 @@ using GoodGuysCommunity.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GoodGuysCommunity.Web.Infrastructure.Extensions
