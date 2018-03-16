@@ -23,8 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Forum\Models\" />
-    <Folder Include="Areas\Forum\Views\" />
     <Folder Include="Areas\Resources\Views\Browse\" />
     <Folder Include="wwwroot\resources\" />
   </ItemGroup>
