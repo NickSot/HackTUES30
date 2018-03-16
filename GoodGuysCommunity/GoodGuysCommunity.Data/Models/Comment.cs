@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace GoodGuysCommunity.Data
+namespace GoodGuysCommunity.Data.Models
 {
     public class Comment
     {

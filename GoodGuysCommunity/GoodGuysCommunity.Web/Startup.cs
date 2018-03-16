@@ -1,6 +1,8 @@
 ﻿using GoodGuysCommunity.Data;
+using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
+using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +33,7 @@ namespace GoodGuysCommunity.Web
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IPostService, PostService>();
 
             services.AddMvc();
         }
@@ -52,9 +55,15 @@ namespace GoodGuysCommunity.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
+            app.UseDatabaseMigration();
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+                    name: "areas",
+                    template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
