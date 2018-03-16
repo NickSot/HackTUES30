@@ -5,15 +5,7 @@
     margin-bottom: 10px;
     color: rgb(101,175,214);
 }
-  .navb {
-    font-family: 'Oswald', sans-serif;
-    text-align: center;
-    font-size: 30px;
-    color: white;
-    display: inline;
-    margin-left: 30px;
-    margin-right: 30px;
-    }
+
 .navbar-header {
     text-align: center;
 }
@@ -70,6 +62,13 @@
     text-align: center;
     }
 
-.navbar-nav > li > a {
-    color: white !important;
+
+.navbar-collapse.collapse a {
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    display: inline;
+    margin-left: 30px;
+    margin-right: 30px;
 }
