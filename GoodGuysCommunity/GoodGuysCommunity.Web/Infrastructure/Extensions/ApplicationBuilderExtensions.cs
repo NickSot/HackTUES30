@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
-using GoodGuysCommunity.Data.Relations;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +17,6 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
             {
                 var db = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
                 db.Database.Migrate();
-
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 //var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
@@ -39,17 +36,14 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
                             await userManager.CreateAsync(dummyuser, "admin12");
                         }
 
-                        if (!db.Users.Any())
-                        {
-                            db.Posts.Add(new Post() { Name = "Test", Content = "ASJDHGASDGJDS", Author = dummyuser, PostDate = DateTime.Now });
-                        }
 
-                        if (!db.ResourceFolders.Any())
+
+ 						if (!db.ResourceFolders.Any())
                         {
                             var folder = new ResourceFolder() { Name = "Everything", LastModified = DateTime.Now, Path = "/" };
                             db.ResourceFolders.Add(folder);
                         }
-
+                       
                         await db.SaveChangesAsync();
                     })
                     .Wait();
