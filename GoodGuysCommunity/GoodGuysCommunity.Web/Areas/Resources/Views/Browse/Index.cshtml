@@ -23,7 +23,7 @@
 <br />
     <center>
     <div id="idfolder">
-        <ul style="display:inline;">
+        <ul style="display:inline;" id="lost">
             @foreach (var subfolder in Model.Children)
             {
                 <li><a href="/resources/browse?path=@subfolder.Path"><button type="button" class="butresults"><i class="far fa-file" style="margin-right:10px;"></i>Folder - @subfolder.Name</button></a></li>

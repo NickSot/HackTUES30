@@ -16,11 +16,11 @@ namespace GoodGuysCommunity.Services
         }
 
         public void Add(string Content, string AuthorId, int PostId) {
-            this.db.Add(new Comment({
+            this.db.Add(new Comment(){
                 Content = Content,
                 AuthorId = AuthorId,
                 PostId = PostId
-            }));
+            });
         }
 
         public void Update() {

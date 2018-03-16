@@ -116,4 +116,8 @@ input {
     font-size: 30px;
     text-align: left;
 }
-
+#forumpostback {
+    background: linear-gradient( rgba(35, 115, 171, 0.21), rgba(35, 115, 171, 0.21) ), 
+    url(/images/green-chameleon-176136-unsplash.jpg);
+}
+}
