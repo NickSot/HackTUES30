@@ -1,9 +1,7 @@
 ﻿using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Services.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using GoodGuysCommunity.Data.Models;
 
 
 namespace GoodGuysCommunity.Services
