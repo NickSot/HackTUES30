@@ -1,4 +1,5 @@
 ﻿using GoodGuysCommunity.Data.Models;
+using GoodGuysCommunity.Data.Relations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,10 @@ namespace GoodGuysCommunity.Data
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public DbSet<Post> Posts { get; set; }
+
+        public DbSet<ResourceFolder> ResourceFolders { get; set; }
+
+        public DbSet<Resource> Resources { get; set; }
 
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
@@ -40,6 +45,36 @@ namespace GoodGuysCommunity.Data
                 .HasOne(r => r.Author)
                 .WithMany(a => a.Uploads)
                 .HasForeignKey(r => r.AuthorId);
+
+            builder
+                .Entity<Resource>()
+                .HasOne(r => r.ResourceFolder)
+                .WithMany(f => f.Resources)
+                .HasForeignKey(r => r.FolderId);
+
+            builder
+                .Entity<ResourceFolder>()
+                .HasMany(f => f.Resources).WithOne(r => r.ResourceFolder);
+//                .HasForeignKey(r => r.FolderId);
+
+            builder
+                .Entity<ResourceFolderChild>()
+                .HasKey(rfc => new { rfc.ChildId, rfc.FolderId });
+
+            builder
+                .Entity<ResourceFolderChild>()
+                .HasOne(rfc => rfc.Folder)
+                .WithMany(f => f.SubFolders)
+                .HasForeignKey(rfc => rfc.FolderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder
+                .Entity<ResourceFolderChild>()
+                .HasOne(rfc => rfc.Child)
+                .WithMany()
+                .HasForeignKey(rfc => rfc.ChildId);
+
+
         }
     }
 }

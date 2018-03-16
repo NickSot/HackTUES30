@@ -1,8 +1,5 @@
-﻿using GoodGuysCommunity.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Linq;
+using GoodGuysCommunity.Data.Models;
 
 namespace GoodGuysCommunity.Services.Interfaces
 {

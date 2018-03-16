@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace GoodGuysCommunity.Data
+namespace GoodGuysCommunity.Data.Models
 {
     public class Resource
     {
@@ -15,5 +15,9 @@ namespace GoodGuysCommunity.Data
         public string AuthorId { get; set; }
 
         public User Author { get; set; }
+
+        public int FolderId { get; set; }
+
+        public ResourceFolder ResourceFolder { get; set; } 
     }
 }

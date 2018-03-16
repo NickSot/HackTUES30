@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using GoodGuysCommunity.Data.Models;
 
-namespace GoodGuysCommunity.Data
+namespace GoodGuysCommunity.Data.Models
 {
     public class Post
     {
@@ -22,6 +21,6 @@ namespace GoodGuysCommunity.Data
 
         public User Author { get; set; }
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
     }
 }
