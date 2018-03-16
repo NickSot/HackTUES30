@@ -12,7 +12,13 @@
     <input type="hidden" name="currentpath" value="@Model.Path" />
     <input type="submit" value="Add folder" />
 </form>
-
+<br/>
+<form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
+    Resource: <input type="file" name="file" />
+    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input type="submit" value="Add resource" />
+</form>
+<br />
 
 <ul>
     @foreach (var subfolder in Model.Children)
