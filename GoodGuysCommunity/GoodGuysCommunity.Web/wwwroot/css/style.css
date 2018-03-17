@@ -117,7 +117,9 @@ input {
     cursor: pointer;
     width: 85%;
     font-size: 30px;
-    text-align: left;#cube { background-color: yellow; }
+    font-family: 'PT Mono', monospace;
+    text-align: left;
+    #cube { background-color: yellow; }
 }
     .butresults:hover {
         color: #3b1a91;
@@ -130,7 +132,7 @@ input {
     url(/images/green-chameleon-176136-unsplash.jpg);
 }
 #library {
-    background: linear-gradient( rgba(255,255,255,0.5), rgba(255,255,255,0.5) ), url(../images/tree_bark.png);
+    background: rgba(197, 175, 255, 0.2);
     background-size: auto;
 }
 #resourceslink {
@@ -138,4 +140,20 @@ input {
 }
 #resicon {
     margin-right: 10px;
+}
+#resheading, #resub, #reslab {
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
+    color: #0f032d;
+}
+#resheading{
+    font-size: 35px;
+}
+#reslab {
+    font-size: 33px;
+}
+#backbut {
+    background-color: #d63939;
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
 }
