@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
@@ -40,7 +41,7 @@ namespace GoodGuysCommunity.Services
             {
                 LastModified = DateTime.Now,
                 Name = name,
-                Path = currentPath + $"{name}/"
+                Path = currentPath + $"{name}/",
             };
 
 
@@ -52,19 +53,18 @@ namespace GoodGuysCommunity.Services
             Directory.CreateDirectory(resourcesPath + folder.Path);
         }
 
-        public async Task AddResourceAsync(string currentPath, string name, byte[] bytes)
+        public async Task AddResourceAsync(string currentPath, string authorId, string name, byte[] bytes)
         {
             var resource = new Resource()
             {
                 UploadDate = DateTime.Now,
                 Name = name,
-                FilePath = currentPath + $"{name}"
+                FilePath = currentPath + $"{name}",
+                AuthorId = authorId
             };
 
             var folder = await this.db.ResourceFolders.FirstOrDefaultAsync(f => f.Path == currentPath);
             folder.Resources.Add(resource);
-
-            //string[] pathArr = name.Split("\\");
 
             var resourcesPath = "/resources" + currentPath + name;
 
@@ -74,6 +74,17 @@ namespace GoodGuysCommunity.Services
             }
 
             await this.db.SaveChangesAsync();
+        }
+
+
+        public void RemoveResource(string Username, int resourceId) {
+            Resource resource = this.db.Resources.Include(p => p.Author).Where(p => p.Id == resourceId).FirstOrDefault();
+
+            if (Username == resource.Author.UserName)
+            {
+                this.db.Resources.Remove(resource);
+                this.db.SaveChanges();
+            }
         }
     }
 }

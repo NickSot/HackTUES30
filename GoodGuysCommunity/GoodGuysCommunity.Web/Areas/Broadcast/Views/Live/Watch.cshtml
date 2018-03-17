@@ -5,14 +5,15 @@
         <source src="rtmp://94.156.157.104:1935/live/@Model" type="rtmp/mp4">
     </video>
 </div>
-@Model
 
 <div class="container" id="chatbox">
 
     <!--<input type="hidden" id="displayname" />-->
     <ul id="discussion"></ul>
-    <input type="text" id="message" />
-    <input type="button" id="sendmessage" value="Send" />
+    <div class="send-line">
+        <input type="text" id="message"  onkeypress="if (event.keyCode == 13) { document.getElementById('sendmessage').click(); return false; }"/>
+        <button type="button" class="btns" id="sendmessage" value="Send">Send</button>
+    </div>
 
     <input type="hidden" id="userneim" value="@this.User.Identity.Name" />
     <input type="hidden" id="room" value="@Model" />

@@ -21,6 +21,7 @@
     background-color: rgb(100,104,214);
     width: 100vw;
     height: 50px;}
+
     #sidebar {
       float: right;
       width: 400px;
@@ -128,7 +129,7 @@ input {
 #forumpostback {
     background: linear-gradient( rgba(35, 115, 171, 0.21), rgba(35, 115, 171, 0.21) ), url(/images/green-chameleon-176136-unsplash.jpg);
     background-size: cover;
-    
+    text-align: center;
 }
 #library {
     background: rgba(197, 175, 255, 0.2);
@@ -159,11 +160,11 @@ input {
 .butforum {
     background-color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px 0px 10px 150px;
     border-radius: 4px;
     border-style: solid;
     border-width: 0px 0px 0px 6px;
-    border-color: #67efaf;
+    border-color: black;
     cursor: pointer;
     width: 50%;
     font-size: 24px;
@@ -197,15 +198,16 @@ input {
     font-family: 'PT Mono', monospace;
 }
 #threadpostbut {
-    background-color: #6fc698;
-    font-size: 25px;
+    background-color: black;
+    font-size: 35px;
     font-weight: bold;
     font-family: Roboto;
-    float: right;
-    margin-right: 30px;
 }
 #forumlogo {
     text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    color: white;
 }
 
 .daform {
@@ -220,6 +222,7 @@ input {
 .butsec {
     font-size: 16px;
     font-family: 'PT Mono', monospace;
+    background-color: #4581a0;
 }
 #msg {
     display: inline;
@@ -267,4 +270,64 @@ input {
 .video-js {
     width: 55% !important;
     height: auto !important;
+}
+.forumform {
+    width: 50vw;
+    height: 6vh;
+    text-align: left;
+}
+#forumf {
+    display: inline-block;
+    text-align: center;
+    margin-top: 60px;
+}
+.forumsubmit {
+    width: 50vw;
+    height: 60vh;
+    resize: none;
+}
+#fsub {
+    height: 30vh;
+}
+#comments {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    text-align:left;
+    padding: 10px;
+    margin-left:25vw;
+}
+#sub {
+    font-size: 22px;
+    background-color: black;
+}
+#idk {
+    background-image:url(../images/escheresque_ste.png);
+    background-repeat: repeat;
+}
+#livestream {
+    border-style: solid;
+    border-color: #6468D6;
+    border-width: 0px 0px 10px 0px;
+}
+#sendmessage {
+    background-color: black;
+    font-size: 16px;
+}
+#subbut {
+    background-color: black;
+    font-size: 24px;
+}
+#facebutton {
+    background-color: #3b5998;
+    font-size: 19px;
+}
+#threadlink {
+    text-decoration:none;
+}
+#forumside{
+    float: right;
+    width: 450px;
+    height: 600px;
+    margin-right: 10px;
+    margin-top: 15px;
 }

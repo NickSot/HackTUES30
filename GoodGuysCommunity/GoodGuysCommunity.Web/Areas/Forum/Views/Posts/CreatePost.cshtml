@@ -1,11 +1,11 @@
 ﻿@model PostDetailsViewModel
-<div style="width: 100%; height: 100%;" id="forumpostback">
-<form action="" method="post">
-    <input type="text" name="Name" value="" placeholder="Name" />
+<div style="width: 100vw; height: 100vh;" id="forumpostback">
+<form action="" method="post" id="forumf">
+    <input type="text" name="Name" value="" placeholder="Name" class="form-control forumform" />
         <br />
-    <textarea name="Content" placeholder="Content"></textarea>
+    <textarea name="Content" placeholder="Content" class="forumsubmit"></textarea>
         <br />
-    <input type="Submit" name="Submit" value="Submit"  />
+   <button type="Submit" name="Submit" value="Submit" class="btns" id="subbut">Submit</button>
     <br />
 
 </form>
