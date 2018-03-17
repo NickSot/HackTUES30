@@ -336,3 +336,16 @@ input {
     font-size: 18px;
     font-weight: bold;
 }
+.anotext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+}
+.coolpic {
+    width: 98.5vw;
+    height: 400px;
+}
+#lpic {
+    background: linear-gradient( rgba(100, 104, 214, 0.2), rgba(100, 104, 214, 0.2)),url(../images/photo-1472173148041-00294f0814a2.jpg);
+    background-size: cover;
+}

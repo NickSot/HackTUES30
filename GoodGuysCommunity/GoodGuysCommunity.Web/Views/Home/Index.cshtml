@@ -3,19 +3,18 @@
 @model PostsListViewModel
 
     <div id="sidebar">
+        <p class="anotext">Stream</p>
         <a asp-area="broadcast" asp-controller="live" asp-action="watch"><img src="~/images/buttonbeta.png" id="streamimage"></a>
+        <p class="anotext">Latest from forum:</p>
             <div id="forumNewest">
-                <div class="forumcontent"><p class="threadtitle">C# блабла</p></div>
-                <div class="forumcontent"><p class="threadtitle">HTML и CSS не правят контакт</p></div>
-                <div class="forumcontent"><p class="threadtitle">Блабла</p></div>
-                <div class="forumcontent"><p class="threadtitle">fedw</p></div>
-            </div>
-
-            <div>
-                @foreach (var post in Model.posts) { 
-                    <a>@post.Author.UserName : @post.Name</a>
-                    <br>
-                }
-            </div>
+                @foreach (var post in Model.posts)
+                {
+                    <div class="forumcontent"><a class="threadtitle">@post.Author.UserName : @post.Name</a></div>
+                        }
+                    </div>
 </div>
+<!--<div class="forumcontent"><p class="threadtitle">C# блабла</p></div>
+<div class="forumcontent"><p class="threadtitle">HTML и CSS не правят контакт</p></div>
+<div class="forumcontent"><p class="threadtitle">Блабла</p></div>
+<div class="forumcontent"><p class="threadtitle">fedw</p></div>-->
 
