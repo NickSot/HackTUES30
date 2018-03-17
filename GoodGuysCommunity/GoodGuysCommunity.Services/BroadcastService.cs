@@ -18,7 +18,7 @@ namespace GoodGuysCommunity.Services
         {
             var user = await this.userManager.FindByNameAsync(userName);
 
-            return user.StreamKey;
+            return user?.StreamKey;
         }
     }
 }

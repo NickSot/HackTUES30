@@ -4,30 +4,35 @@
 
     // Get the user name and store it to prepend to messages.
     var name = $("#userneim").val();
+    var currentroom = $("#room").val();
     // Set initial focus to message input box.
     messageInput.focus();
 
     // Start the connection.
     startConnection('/chat', function (connection) {
             // Create a function that the hub can call to broadcast messages.
-            connection.on('broadcastMessage', function (name, message) {
+            connection.on('broadcastMessage', function (name, message, room) {
                 // Html encode display name and message.
                 var encodedName = name;
                 var encodedMsg = message;
-                // Add the message to the page.
-                var liElement = document.createElement('li');
-                liElement.id = "msg";
-                liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg + '<br>';
-                document.getElementById('discussion').appendChild(liElement);
-                $discussion = $('#discussion');
-                $discussion.scrollTop($discussion[0].scrollHeight  + 15);
+               
+                if (currentroom == room) {
+                    // Add the message to the page.
+                    var liElement = document.createElement('li');
+                    liElement.id = "msg";
+                    liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg + '<br>';
+                    document.getElementById('discussion').appendChild(liElement);
+                    $discussion = $('#discussion');
+                    $discussion.scrollTop($discussion[0].scrollHeight + 15);
+                }
+                
             });
         })
         .then(function (connection) {
             console.log('connection started');
             document.getElementById('sendmessage').addEventListener('click', function (event) {
                 // Call the Send method on the hub.
-                connection.invoke('send', name, messageInput.value);
+                connection.invoke('send', name, messageInput.value, currentroom);
 
                 // Clear text box and reset focus for next comment.
                 messageInput.value = '';

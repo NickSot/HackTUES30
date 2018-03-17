@@ -20,7 +20,7 @@ namespace GoodGuysCommunity.Web.Areas.Broadcast.Controllers
                 return this.BadRequest("No username");
             }
 
-            var key = await this.broadcastService.GetStreamKeyAsync(this.User.Identity.Name);
+            var key = await this.broadcastService.GetStreamKeyAsync(username);
 
             if (string.IsNullOrEmpty(key))
             {
