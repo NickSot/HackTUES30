@@ -14,14 +14,17 @@ namespace GoodGuysCommunity.Web.Controllers
     public class HomeController : Controller
     {
         IPostService postService;
+        IResourceManager resourceManager;
 
-        public HomeController(IPostService postService) {
+        public HomeController(IPostService postService, IResourceManager resourceManager) {
             this.postService = postService;
+            this.resourceManager = resourceManager;
         }
 
-        public IActionResult Index(PostsListViewModel model)
+        public IActionResult Index(PostsListAndResourcesViewModel model)
         {
             model.posts = this.postService.GetByDate().ToList();
+            model.resources = this.resourceManager.GetByDate().ToList();
             return this.View(model);
         }
 

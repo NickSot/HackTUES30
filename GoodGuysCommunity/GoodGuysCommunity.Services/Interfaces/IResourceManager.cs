@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using GoodGuysCommunity.Data.Models;
 
 namespace GoodGuysCommunity.Services.Interfaces
@@ -10,5 +11,6 @@ namespace GoodGuysCommunity.Services.Interfaces
         Task AddFolderAsync(string currentPath, string name);
         Task AddResourceAsync(string currentPath, string author, string name, byte[] bytes);
         void RemoveResource(string Username, int resourceId);
+        IQueryable<Resource> GetByDate();
     }
 }
