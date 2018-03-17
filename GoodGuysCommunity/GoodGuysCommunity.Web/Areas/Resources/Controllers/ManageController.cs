@@ -25,6 +25,10 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFolder(string name, string currentPath)
         {
+            if (name == null) {
+                return this.RedirectToAction("Index", "Browse");
+            }
+
             await this.resourceManager.AddFolderAsync(currentPath, name);
 
             return this.RedirectToAction("Index", "Browse", new { path = currentPath });
@@ -33,6 +37,14 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
         [HttpPost]
         public async Task<IActionResult> AddResource(IFormFile file, string currentPath)
         {
+            if (file == null) {
+                return this.RedirectToAction("Index", "Browse");
+            }
+
+            if (currentPath == null) {
+                return this.RedirectToAction("Index", "Browse");
+            }
+
             var user = await this.users.FindByNameAsync(this.User.Identity.Name);
             await this.resourceManager.AddResourceAsync(currentPath, user.Id, file.FileName, await file.GetData());
 
