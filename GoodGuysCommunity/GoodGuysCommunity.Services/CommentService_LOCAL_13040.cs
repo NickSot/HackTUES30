@@ -15,10 +15,6 @@ namespace GoodGuysCommunity.Services
             this.db = db;
         }
 
-        public string GetUserId(string Username) {
-            return this.db.Users.Find(Username).Id;
-        }
-
         public Comment Add(string Content, int CommentId, int PostId) {
             Comment comment = new Comment();
             comment.Content = Content;

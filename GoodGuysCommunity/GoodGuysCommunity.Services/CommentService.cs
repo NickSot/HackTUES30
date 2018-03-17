@@ -15,11 +15,6 @@ namespace GoodGuysCommunity.Services
             this.db = db;
         }
 
-<<<<<<< HEAD
-        public string GetUserId(string Username) {
-            return this.db.Users.Find(Username).Id;
-        }
-
         public Comment Add(string Content, int CommentId, int PostId) {
             Comment comment = new Comment();
             comment.Content = Content;
@@ -31,14 +26,6 @@ namespace GoodGuysCommunity.Services
             this.db.Add(comment);
 
             return comment;
-=======
-        public void Add(string Content, string AuthorId, int PostId) {
-            this.db.Add(new Comment(){
-                Content = Content,
-                AuthorId = AuthorId,
-                PostId = PostId
-            });
->>>>>>> 274260038fb874a6c445c9a439a9cada46b5d2ff
         }
 
         public void Update() {
