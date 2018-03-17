@@ -6,8 +6,16 @@
 <br />
 
 <div>
-    @foreach (var comment in Model.Comments) {
+    @foreach (var comment in Model.Comments)
+    {
         <div>@comment.Content</div>
-     }
+    }
 </div>
-<center><a href="/forum/comments/index/@Model"><button class="btns">Comment!</button></a></center>
+<form action="/forum/comments/add" method="post">
+    <input type="hidden" name="postId" value="@Model.Id" />
+    <input type="hidden" name="username" value="@Model.Name" />
+    <textarea name="Content"></textarea>
+    <input type="submit" name="submit" value="Submit" />
+</form>
+
+<!--<center><a href="/forum/posts/comments/details/@Model"><button class="foreachs">Comment!</button></a></center>-->
