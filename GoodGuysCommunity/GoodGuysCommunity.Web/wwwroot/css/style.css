@@ -21,6 +21,7 @@
     background-color: rgb(100,104,214);
     width: 100vw;
     height: 50px;}
+
     #sidebar {
       float: right;
       width: 400px;
@@ -198,11 +199,9 @@ input {
 }
 #threadpostbut {
     background-color: black;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: bold;
     font-family: Roboto;
-    float: right;
-    margin-right: 30px;
 }
 #forumlogo {
     text-align: center;
@@ -321,4 +320,14 @@ input {
 #facebutton {
     background-color: #3b5998;
     font-size: 19px;
+}
+#threadlink {
+    text-decoration:none;
+}
+#forumside{
+    float: right;
+    width: 450px;
+    height: 600px;
+    margin-right: 10px;
+    margin-top: 15px;
 }
