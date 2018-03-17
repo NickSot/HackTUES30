@@ -166,7 +166,7 @@ input {
     border-width: 0px 0px 0px 6px;
     border-color: black;
     cursor: pointer;
-    width: 50%;
+    width: 60%;
     font-size: 24px;
     font-family: Roboto;
     text-align: left;
@@ -185,7 +185,7 @@ input {
     border-width: 0px 0px 0px 6px;
     border-color: #75a0f7;
     cursor: pointer;
-    width: 85%;
+    width: 75%;
     font-size: 24px;
     font-family: 'PT Mono', monospace;
     text-align: left;
@@ -196,6 +196,7 @@ input {
 }
 #forumtitle {
     font-family: 'PT Mono', monospace;
+    font-size: 25px;
 }
 #threadpostbut {
     background-color: black;
@@ -300,10 +301,6 @@ input {
     font-size: 22px;
     background-color: black;
 }
-#idk {
-    background-image:url(../images/escheresque_ste.png);
-    background-repeat: repeat;
-}
 #livestream {
     border-style: solid;
     border-color: #6468D6;
@@ -325,9 +322,37 @@ input {
     text-decoration:none;
 }
 #forumside{
+    background-color: white;
+    border-radius: 10px;
     float: right;
     width: 450px;
-    height: 600px;
+    height: 450px;
     margin-right: 10px;
     margin-top: 15px;
+}
+#delbut {
+    background-color: #ce3535;
+    font-size: 18px;
+    font-weight: bold;
+}
+.anotext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    margin: 10px;
+}
+.coolpic {
+    width: 98.5vw;
+    height: 400px;
+
+}
+#lpic {
+    background: linear-gradient( rgba(100, 104, 214, 0.13), rgba(100, 104, 214, 0.13)),url(../images/photo-1472173148041-00294f0814a2.jpg);
+    background-size: cover;
+}
+#homepic {
+    background: linear-gradient( rgba(0,0,0, 0.13), rgba(0,0,0, 0.13)),url(../images/nav.jpg);
+    background-size: cover;
+}
+#idk {
+    background-color: #e3eaf4;
 }
