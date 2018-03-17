@@ -13,10 +13,13 @@
                 <label asp-for="Username"></label>
                 <input asp-for="Username" class="form-control" disabled />
             </div>
-            <div class="form-group">
-                <label asp-for="StreamKey"></label>
-                <input asp-for="StreamKey" class="form-control" disabled />
-            </div>
+            @if (this.User.IsInRole("Streamer"))
+            {
+                <div class="form-group">
+                    <label asp-for="StreamKey"></label>
+                    <input asp-for="StreamKey" class="form-control" disabled />
+                </div>
+            }
             <div class="form-group">
                 <label asp-for="Email"></label>
                 @if (Model.IsEmailConfirmed)

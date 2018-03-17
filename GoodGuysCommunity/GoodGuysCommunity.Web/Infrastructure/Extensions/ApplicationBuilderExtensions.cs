@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
@@ -17,9 +18,9 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var db = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                //db.Database.Migrate();
+                db.Database.Migrate();
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
-                //var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
+                var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 
                 Task
                     .Run(async () =>
@@ -30,18 +31,26 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
                         {
                             dummyuser = new User
                             {
-                                Email = "pesho@test.com",
-                                UserName = "pesho@test.com",
+                                Email = "test@test.com",
+                                UserName = "Test"
                             };
 
-                            await userManager.CreateAsync(dummyuser, "admin12");
+                            await userManager.CreateAsync(dummyuser, "test12");
                         }
-
-
+                        
  						if (!db.ResourceFolders.Any())
                         {
                             var folder = new ResourceFolder() { Name = "Everything", LastModified = DateTime.Now, Path = "/" };
                             db.ResourceFolders.Add(folder);
+                        }
+
+                        if (!roleManager.Roles.Any())
+                        {
+                            var streamer = new IdentityRole("Streamer");
+                            var admin = new IdentityRole("Admin");
+                            await roleManager.CreateAsync(streamer);
+                            await roleManager.CreateAsync(admin);
+                            await userManager.AddToRoleAsync(dummyuser, "Streamer");
                         }
                        
                         await db.SaveChangesAsync();
