@@ -43,7 +43,7 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
             string fileName = arr[arr.Length - 1];
 
-            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
+            return this.File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
     }
 }
