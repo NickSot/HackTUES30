@@ -1,11 +1,11 @@
-﻿@model IEnumerable<PostDetailsViewModel>
-
-<a href="/forum/posts/createpost"><button type="button" class="btns" style="background-color: lightgreen;">Post a thread</button></a>
+﻿@using GoodGuysCommunity.Web.Areas.Forum.Models;
+@model IEnumerable<PostDetailsViewModel>
+    <h1 id="forumlogo">Forum</h1>
+<a href="/forum/posts/createpost"><button type="button" class="btns" id="threadpostbut">Post a thread</button></a>
 
 <ul class="ar">
     @foreach (var post in Model)
     {
-        <li>@post.Name <a href="/forum/posts/details/@post">Details</a></li>
-        <li><a href="/forum/posts/details/@post.Id" id="threadlink"><button class="butresults"><i class="fas fa-paper-plane resicon"></i>@post.Name</button></a></li>
+        <li><a href="/forum/posts/details/@post.Id" id="threadlink"><button class="butforum"><i class="fas fa-paper-plane resicon"></i>@post.Name </button></a></li>
     }
 </ul>
