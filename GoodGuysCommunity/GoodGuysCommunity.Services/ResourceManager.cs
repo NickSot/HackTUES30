@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
@@ -51,7 +52,7 @@ namespace GoodGuysCommunity.Services
             Directory.CreateDirectory(resourcesPath + folder.Path);
         }
 
-        public async Task AddResourceAsync(string currentPath, string name, string extension, byte[] bytes)
+        public async Task AddResourceAsync(string currentPath, string name, byte[] bytes)
         {
             var resource = new Resource()
             {
@@ -63,13 +64,26 @@ namespace GoodGuysCommunity.Services
             var folder = await this.db.ResourceFolders.FirstOrDefaultAsync(f => f.Path == currentPath);
             folder.Resources.Add(resource);
 
+            //string[] pathArr = name.Split("\\");
+
             var resourcesPath = "/resources" + currentPath + name;
-            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath))
+
+            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath)) 
             {
                 await file.WriteAsync(bytes, 0, bytes.Length);
             }
 
             await this.db.SaveChangesAsync();
+        }
+
+        public async Task DownloadFileAsync(string FilePath) {
+            StreamReader sr = new StreamReader(FilePath);
+
+            byte[] ResultFileInfo = Encoding.ASCII.GetBytes(sr.ReadToEnd());
+
+            using (var file = File.Create("C:\\Users\\NIKOLA\\Desktop")) {
+                await file.WriteAsync(ResultFileInfo, 0, ResultFileInfo.Length);
+            }
         }
     }
 }

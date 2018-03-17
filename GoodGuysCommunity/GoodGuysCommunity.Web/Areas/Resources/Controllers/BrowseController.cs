@@ -24,5 +24,7 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
             var model = this.mapper.Map<ResourceFolderViewModel>(folder);
             return this.View(model);
         }
+
+
     }
 }

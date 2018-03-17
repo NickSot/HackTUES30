@@ -35,14 +35,13 @@
                 @foreach (var subfolder in Model.Children)
             {
                     <li><a href="/resources/browse?path=@subfolder.Path" id="resourceslink"><button class="butresults"><i class="fas fa-folder resicon"></i>@subfolder.Name</button></a></li>
-
                 }
             </ul>
 
             <ul style="list-style-type: none;">
                 @foreach (var resource in Model.Resources)
-            {
-                    <li><button class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name</button></li>
+                {
+                    <li><button type="submit" name="DownloadFileAsync" value="@Model.Path" class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name</button></li>
                 }
             </ul>
         </div>
