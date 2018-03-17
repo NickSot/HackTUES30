@@ -276,6 +276,7 @@ input {
     width: 50vw;
     height: 6vh;
     text-align: left;
+    font-family:'Times New Roman', Times, serif;
 }
 #forumf {
     display: inline-block;
