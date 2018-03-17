@@ -14,5 +14,7 @@ namespace GoodGuysCommunity.Data.Models
         public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
 
         public ICollection<Resource> Uploads { get; set; } = new HashSet<Resource>();
+
+        public ICollection<Resource> FavResources { get; set; } = new HashSet<Resource>();
     }
 }

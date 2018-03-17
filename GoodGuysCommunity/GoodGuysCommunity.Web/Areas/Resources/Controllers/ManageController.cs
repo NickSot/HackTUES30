@@ -70,6 +70,11 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
             return RedirectToAction("Index", "Browse");
         }
+
+        public async Task AddFavResource(int resourceId) {
+            User user = await this.users.FindByNameAsync(User.Identity.Name);
+            this.resourceManager.AddFavourite(resourceId, user.Id);
+        }
     }
 }
 

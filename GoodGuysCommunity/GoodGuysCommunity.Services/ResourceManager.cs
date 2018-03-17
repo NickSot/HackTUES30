@@ -30,6 +30,11 @@ namespace GoodGuysCommunity.Services
             return resources;
         }
 
+        public void AddFavourite(int resourceId, string userId) {
+            this.db.Users.Find(userId).FavResources.Add(this.db.Resources.Find(resourceId));
+            this.db.SaveChanges();
+        }
+
         public async Task<ResourceFolder> GetAsync(string path)
         {
             var root = await this.db

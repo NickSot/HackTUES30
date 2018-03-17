@@ -10,5 +10,6 @@ namespace GoodGuysCommunity.Web.Models.ManageViewModels
     {
         public List<Post> posts { get; set; }
         public List<Resource> resources { get; set; }
+        public List<Resource> favouriteResources { get; set; }
     }
 }

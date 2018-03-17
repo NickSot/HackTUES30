@@ -12,5 +12,6 @@ namespace GoodGuysCommunity.Services.Interfaces
         Task AddResourceAsync(string currentPath, string author, string name, byte[] bytes);
         void RemoveResource(string Username, int resourceId);
         IQueryable<Resource> GetByDate();
+        void AddFavourite(int resourceId, string userId);
     }
 }
