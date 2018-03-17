@@ -37,7 +37,11 @@ namespace GoodGuysCommunity.Web
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IResourceManager, ResourceManager>();
+<<<<<<< HEAD
             services.AddTransient<ICommentService, CommentService>();
+=======
+            services.AddTransient<IBroadcastService, BroadcastService>();
+>>>>>>> 274260038fb874a6c445c9a439a9cada46b5d2ff
             services.AddAutoMapper();
 
             services.AddMvc();
@@ -60,7 +64,7 @@ namespace GoodGuysCommunity.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
-            //app.UseDatabaseMigration();
+            app.UseDatabaseMigration();
 
             app.UseMvc(routes =>
             {
