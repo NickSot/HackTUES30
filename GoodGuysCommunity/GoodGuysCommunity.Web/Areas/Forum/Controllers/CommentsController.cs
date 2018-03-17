@@ -5,6 +5,7 @@ using GoodGuysCommunity.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Web.Areas.Forum.Models;
+using System.Linq;
 
 namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
 {
@@ -22,13 +23,18 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
         }
 
         public IActionResult Index() {
-            return View();
+            var model = this.postService.GetAll().Select(p => new PostDetailsViewModel()
+            {
+                Id = p.Id,
+                Name = p.Name
+            }).FirstOrDefault();
+
+            return this.View(model);
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(string Content, string Username, int PostId) {
             var user = await userManager.FindByNameAsync(Username);
-            
             
             var comment = this.commentService.Add(Content, user.Id, PostId);
             this.commentService.Update();
@@ -36,7 +42,7 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
             this.postService.Update(PostId, comment);
             this.postService.SaveChanges();
 
-            return RedirectToAction("Details", "Posts");
+            return RedirectToAction("Details", "Posts", new { Id = PostId});
         }
     }
 }
