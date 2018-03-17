@@ -100,7 +100,6 @@
 }
 input {
     padding: 12px 20px;
-    margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -263,4 +262,9 @@ input {
 .video-chat-wrapper {
     display: flex;
     height: 80vh;
+}
+
+.video-js {
+    width: 55% !important;
+    height: auto !important;
 }
