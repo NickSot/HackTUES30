@@ -30,7 +30,13 @@ namespace GoodGuysCommunity.Services
             });
         }
 
-        public void Update() {
+        public void Update(int Id, Comment Comment) {
+            Post post = this.db.Posts.Find(Id);
+
+            post.Comments.Add(Comment);
+        }
+
+        public void SaveChanges() {
             this.db.SaveChanges();
         }
 
