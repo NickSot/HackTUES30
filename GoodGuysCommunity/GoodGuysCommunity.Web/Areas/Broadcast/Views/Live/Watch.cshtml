@@ -1,4 +1,6 @@
-﻿<video width="352" height="198" controls>
+﻿<div class="ar">
+
+    <video width="352" height="198" controls>
     @*<source src="C:\Users\Gencho-Laptop\Desktop\strimm.m3u8" type="application/x-mpegURL">*@
 </video>
 
@@ -7,7 +9,7 @@
     <input type="button" id="sendmessage" value="Send" />
     <!--<input type="hidden" id="displayname" />-->
     <ul id="discussion"></ul>
-</div>
+</div></div>
 
 @section Scripts{ 
     <script type="text/javascript" src="/js/signalr.js"></script>
@@ -30,7 +32,8 @@
                         var encodedMsg = message;
                         // Add the message to the page.
                         var liElement = document.createElement('li');
-                        liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg;
+                        liElement.id = "msg";
+                        liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg + '<br>';
                         document.getElementById('discussion').appendChild(liElement);
                     });
                 })
