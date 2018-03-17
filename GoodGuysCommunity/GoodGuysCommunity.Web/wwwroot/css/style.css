@@ -276,7 +276,8 @@ input {
     width: 50vw;
     height: 6vh;
     text-align: left;
-    font-family:'Times New Roman', Times, serif;
+    font-family:'Blogger Sans';
+    font-size:25px;
 }
 #forumf {
     display: inline-block;
@@ -287,6 +288,8 @@ input {
     width: 50vw;
     height: 60vh;
     resize: none;
+    font-family: 'Blogger Sans';
+    font-size: 25px;
 }
 #fsub {
     height: 30vh;
@@ -315,7 +318,7 @@ input {
     background-color: black;
     font-size: 24px;
 }
-#facebutton {
+.facebutton {
     background-color: #3b5998;
     font-size: 19px;
 }
@@ -356,4 +359,9 @@ input {
 }
 #idk {
     background-color: #e3eaf4;
+}
+.au {
+    margin-top: 15px;
+    background-color: blue;
+    text-decoration: none;
 }
