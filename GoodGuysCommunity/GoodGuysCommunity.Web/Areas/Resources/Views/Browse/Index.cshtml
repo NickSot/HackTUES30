@@ -33,7 +33,7 @@
         <ul style="display:inline;" id="lost">
             @foreach (var subfolder in Model.Children)
             {
-                <li><a href="/resources/browse?path=@subfolder.Path"><button type="button" class="butresults"><i class="far fa-file" style="margin-right:10px;"></i>Folder - @subfolder.Name</button></a></li>
+                <li><a href="/resources/browse?path=@subfolder.Path" id="resourceslink"><button class="butresults"><i class="fas fa-folder" id="resicon"></i>@subfolder.Name</button></a></li>
     
             }
         </ul>
