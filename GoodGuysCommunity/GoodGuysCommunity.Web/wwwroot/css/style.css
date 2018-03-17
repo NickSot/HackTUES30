@@ -325,9 +325,11 @@ input {
     text-decoration:none;
 }
 #forumside{
+    background-color: white;
+    border-radius: 10px;
     float: right;
     width: 450px;
-    height: 600px;
+    height: 450px;
     margin-right: 10px;
     margin-top: 15px;
 }
@@ -338,14 +340,19 @@ input {
 }
 .anotext {
     font-family: 'Open Sans', sans-serif;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 26px;
+    margin: 10px;
 }
 .coolpic {
     width: 98.5vw;
     height: 400px;
+
 }
 #lpic {
-    background: linear-gradient( rgba(100, 104, 214, 0.2), rgba(100, 104, 214, 0.2)),url(../images/photo-1472173148041-00294f0814a2.jpg);
+    background: linear-gradient( rgba(100, 104, 214, 0.13), rgba(100, 104, 214, 0.13)),url(../images/photo-1472173148041-00294f0814a2.jpg);
+    background-size: cover;
+}
+#homepic {
+    background: linear-gradient( rgba(0,0,0, 0.13), rgba(0,0,0, 0.13)),url(../images/nav.jpg);
     background-size: cover;
 }
