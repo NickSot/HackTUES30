@@ -274,6 +274,7 @@ input {
 }
 .forumform {
     width: 50vw;
+    height: 6vh;
     text-align: left;
 }
 #forumf {
@@ -312,4 +313,12 @@ input {
 #sendmessage {
     background-color: black;
     font-size: 16px;
+}
+#subbut {
+    background-color: black;
+    font-size: 24px;
+}
+#facebutton {
+    background-color: #3b5998;
+    font-size: 19px;
 }
