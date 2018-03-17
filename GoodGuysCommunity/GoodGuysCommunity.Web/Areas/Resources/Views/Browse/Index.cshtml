@@ -6,33 +6,42 @@
     prevPath = prevPath.Substring(0, index >= 0 ? index : 0);
     prevPath += "/";
 }
-<div>You are in: @Model.Path <a href="/resources/browse?path=@prevPath">Back</a></div>
+<head>
+<link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="~/css/style.css"></head>
+<body id="library">
+<div ><h3 id="resheading">@Model.Name</h3></div>
+<div id="resub" class="breadcrumb">@Model.Path></div>
+<div style="text-align:center"><a href="/resources/browse?path=@prevPath"><button type="button" class="btns" id="backbut">Back</button></a></div>
 <br/>
-ADD FOLDER
 <form action="/resources/manage/addfolder" method="post">
-    Name: <input type="text" name="name" />
-    <input type="hidden" name="currentpath" value="@Model.Path" required/>
-    <input type="submit" value="Add folder" />
+    <input type="text" name="name"placeholder="Name" />
+    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input class="btns" type="submit" value="Add folder" />
 </form>
-<br/>
-ADD RESOURCE
-<form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
-    Resource: <input type="file" name="file" />
-    <input type="hidden" name="currentpath" value="@Model.Path"required />
-    <input type="submit" value="Add resource" />
+
+    <form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
+        <center><input type="file" name="file" placeholder="Choose File" /></center>
+
+    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input class="btns" type="submit" value="Add resource" />
 </form>
+    <h3 id ="reslab">Resources:</h3>
 <br />
+    <center>
+    <div id="idfolder">
+        <ul class="ar">
+            @foreach (var subfolder in Model.Children)
+            {
+                <li><a href="/resources/browse?path=@subfolder.Path" id="resourceslink"><button class="butresults"><i class="fas fa-folder resicon"></i>@subfolder.Name</button></a></li>
+    
+            }
+        </ul>
 
-<ul>
-    @foreach (var subfolder in Model.Children)
-    {
-        <li><a href="/resources/browse?path=@subfolder.Path">Folder</a> - @subfolder.Name</li>
-    }
-</ul>
-
-<ul>
-    @foreach (var resource in Model.Resources)
-    {
-        <li>Resource - @resource.Name</li>
-    }
-</ul>
+        <ul style="list-style-type: none;">
+            @foreach (var resource in Model.Resources)
+            {
+                <li><button class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name</button></li>
+            }
+        </ul>
+    </div></center></body>

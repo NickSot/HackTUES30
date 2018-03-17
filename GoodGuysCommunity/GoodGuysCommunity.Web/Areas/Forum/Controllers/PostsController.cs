@@ -43,12 +43,13 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
         public async Task<IActionResult> CreatePost(PostDetailsViewModel model) {
             var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
             this.postsService.Add(model.Name, model.Content, user.Id);
-            this.postsService.Update();
+            this.postsService.SaveChanges();
             return this.RedirectToAction("Index", "Posts");
         }
 
         public IActionResult Details(int Id) {
             var post = postsService.GetAll().Where(p => p.Id == Id).FirstOrDefault();
+
             var model = new PostDetailsViewModel()
             {
                 Name = post.Name,

@@ -15,12 +15,17 @@ namespace GoodGuysCommunity.Services
             this.db = db;
         }
 
-        public void Add(string Content, string AuthorId, int PostId) {
-            this.db.Add(new Comment(){
-                Content = Content,
-                AuthorId = AuthorId,
-                PostId = PostId
-            });
+        public Comment Add(string Content, string AuthorId, int PostId) {
+            Comment comment = new Comment();
+            comment.Content = Content;
+            comment.AuthorId = AuthorId;
+            comment.PostId = PostId;
+            comment.Author = this.db.Users.Find(AuthorId);
+            comment.Post = this.db.Posts.Find(PostId);
+
+            this.db.Add(comment);
+
+            return comment;
         }
 
         public void Update() {

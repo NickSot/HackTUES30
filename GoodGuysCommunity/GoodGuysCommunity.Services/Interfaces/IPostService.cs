@@ -7,6 +7,7 @@ namespace GoodGuysCommunity.Services.Interfaces
     {
         IQueryable<Post> GetAll();
         void Add(string Name, string Content, string AuthorId);
-        void Update();
+        void Update(int Id, Comment Comment);
+        void SaveChanges();
     }
 }

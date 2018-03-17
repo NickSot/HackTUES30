@@ -26,11 +26,16 @@ namespace GoodGuysCommunity.Services
                 Content = Content,
                 AuthorId = AuthorId,
                 PostDate = DateTime.Now
-                
             });
         }
 
-        public void Update() {
+        public void Update(int Id, Comment Comment) {
+            Post post = this.db.Posts.Find(Id);
+
+            post.Comments.Add(Comment);
+        }
+
+        public void SaveChanges() {
             this.db.SaveChanges();
         }
 

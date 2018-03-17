@@ -1,0 +1,45 @@
+﻿@model ResourceFolderViewModel
+@{
+    var lenght = Model.Path.Length - 2;
+    var prevPath = Model.Path.Substring(0, lenght >= 0 ? lenght : 0);
+    var index = prevPath.LastIndexOf("/", StringComparison.Ordinal);
+    prevPath = prevPath.Substring(0, index >= 0 ? index : 0);
+    prevPath += "/";
+}
+<body style="background-color: #edeaf2;">
+<div><h3>You are in: @Model.Name</h3> <a href="/resources/browse?path=@prevPath"><button type="button" class="btn btn-danger">Back</button></a></div>
+<div>You are in: @Model.Path <a href="/resources/browse?path=@prevPath">Back</a></div>
+<br/>
+<form action="/resources/manage/addfolder" method="post">
+    <input type="text" name="name"placeholder="Input name" />
+    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input class="btns" type="submit" value="Add folder" />
+</form>
+
+<form action="/resources/manage/addresource" method="post" style = "text-align:center;" enctype="multipart/form-data">
+    <center><input type="file" name="file" placeholder="Choose File"/></center></form>
+<br/>
+<form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
+    Resource: <input type="file" name="file" />
+    <input type="hidden" name="currentpath" value="@Model.Path" />
+    <input class="btns" type="submit" value="Add resource" />
+</form>
+    <h3 style="text-align:center;">Resources:</h3>
+<br />
+    <center>
+    <div id="idfolder">
+        <ul style="display:inline;" id="lost">
+            @foreach (var subfolder in Model.Children)
+            {
+                <li><a href="/resources/browse?path=@subfolder.Path"><button type="button" class="butresults"><i class="far fa-file" style="margin-right:10px;"></i>Folder - @subfolder.Name</button></a></li>
+    
+            }
+        </ul>
+
+        <ul>
+            @foreach (var resource in Model.Resources)
+            {
+                <li>"Resource - @resource.Name</li>
+            }
+        </ul>
+    </div></center></body>
