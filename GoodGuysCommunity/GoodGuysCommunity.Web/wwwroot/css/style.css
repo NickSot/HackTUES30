@@ -158,13 +158,18 @@ input {
     font-weight: bold;
 }
 .butforum {
-    background-color: #9975F7;
-    color: white;
+    background-color: white;
     padding: 14px 20px;
     margin: 8px 0;
-    border-radius: 10px;
-    border: none;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0px 0px 0px 6px;
+    border-color: #67efaf;
     cursor: pointer;
+    width: 75%;
+    font-size: 24px;
+    font-family: Roboto;
+    text-align: left;
 }
 .ar {
     display:inline;
@@ -172,7 +177,7 @@ input {
 .fileresults {
     background-color: white;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: 8px;
     border-radius: 4px;
     border-style: solid;
     border-width: 0px 0px 0px 6px;
@@ -182,4 +187,22 @@ input {
     font-size: 24px;
     font-family: 'PT Mono', monospace;
     text-align: left;
+}
+#forumcontent {
+    font-family: 'Open Sans', sans-serif;
+    font-size:24px;
+}
+#forumtitle {
+    font-family: 'PT Mono', monospace;
+}
+#threadpostbut {
+    background-color: #6fc698;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: Roboto;
+    float: right;
+    margin-right: 30px;
+}
+#forumlogo {
+    text-align: center;
 }

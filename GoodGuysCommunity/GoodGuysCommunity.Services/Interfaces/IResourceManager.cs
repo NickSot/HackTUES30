@@ -9,6 +9,5 @@ namespace GoodGuysCommunity.Services.Interfaces
         Task<ResourceFolder> GetAsync(string path);
         Task AddFolderAsync(string currentPath, string name);
         Task AddResourceAsync(string currentPath, string name, byte[] bytes);
-        Task DownloadFileAsync(string FilePath);
     }
 }

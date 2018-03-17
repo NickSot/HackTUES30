@@ -8,6 +8,7 @@
 }
 <head>
     <link href="https://fonts.googleapis.com/css?family=PT+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/css/style.css">
 </head>
 <body id="library">
@@ -33,7 +34,7 @@
         <div id="idfolder">
             <ul class="ar">
                 @foreach (var subfolder in Model.Children)
-            {
+                {
                     <li><a href="/resources/browse?path=@subfolder.Path" id="resourceslink"><button class="butresults"><i class="fas fa-folder resicon"></i>@subfolder.Name</button></a></li>
                 }
             </ul>
@@ -41,7 +42,7 @@
             <ul style="list-style-type: none;">
                 @foreach (var resource in Model.Resources)
                 {
-                    <li><button type="submit" name="DownloadFileAsync" value="@Model.Path" class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name</button></li>
+                    <li><a href="/resources/manage/downloadresource?currentpath=C:/Users/NIKOLA/Desktop/HackTUES30/GoodGuysCommunity/GoodGuysCommunity.Web/wwwroot/resources/@resource.FilePath" class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name</a></li>
                 }
             </ul>
         </div>

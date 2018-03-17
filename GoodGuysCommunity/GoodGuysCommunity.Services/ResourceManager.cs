@@ -75,15 +75,5 @@ namespace GoodGuysCommunity.Services
 
             await this.db.SaveChangesAsync();
         }
-
-        public async Task DownloadFileAsync(string FilePath) {
-            StreamReader sr = new StreamReader(FilePath);
-
-            byte[] ResultFileInfo = Encoding.ASCII.GetBytes(sr.ReadToEnd());
-
-            using (var file = File.Create("C:\\Users\\NIKOLA\\Desktop")) {
-                await file.WriteAsync(ResultFileInfo, 0, ResultFileInfo.Length);
-            }
-        }
     }
 }

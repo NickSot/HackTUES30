@@ -1,8 +1,8 @@
 ﻿@model PostDetailsViewModel
 
-<h1>@Model.Name</h1>
+<h1 id="forumtitle">@Model.Name</h1>
 <br />
-<h2>@Model.Content</h2>
+<p id="forumcontent">@Model.Content</p>
 <br />
 
 <div>
@@ -10,9 +10,4 @@
         <div>@comment.Content</div>
      }
 </div>
-<form action="/forum/comments/add" method="post">
-    Add comment: <textarea name="Content"></textarea>
-    <input type="hidden" name="Username" value="@this.User.Identity.Name" />
-    <input type="hidden" name="PostId" value="@Model.Id" />
-    <input type="submit" name="Submit" value="Submit" />
-</form>
+<center><a href="/forum/comments/index/@Model"><button class="btns">Comment!</button></a></center>
