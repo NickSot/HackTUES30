@@ -58,7 +58,7 @@ namespace GoodGuysCommunity.Web.Controllers
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await this.signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await this.signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
                     this.logger.LogInformation("User logged in.");
@@ -217,7 +217,7 @@ namespace GoodGuysCommunity.Web.Controllers
             this.ViewData["ReturnUrl"] = returnUrl;
             if (this.ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Email };
                 var result = await this.userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -289,8 +289,9 @@ namespace GoodGuysCommunity.Web.Controllers
                 // If the user does not have an account, then ask the user to create an account.
                 this.ViewData["ReturnUrl"] = returnUrl;
                 this.ViewData["LoginProvider"] = info.LoginProvider;
+                var username = info.Principal.FindFirstValue(ClaimTypes.Name);
                 var email = info.Principal.FindFirstValue(ClaimTypes.Email);
-                return this.View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+                return this.View("ExternalLogin", new ExternalLoginViewModel { Username = username, Email = email });
             }
         }
 
@@ -307,7 +308,7 @@ namespace GoodGuysCommunity.Web.Controllers
                 {
                     throw new ApplicationException("Error loading external login information during confirmation.");
                 }
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Email };
                 var result = await this.userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

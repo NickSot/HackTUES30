@@ -47,6 +47,12 @@ namespace GoodGuysCommunity.Web
             services.AddTransient<IResourceManager, ResourceManager>();
             services.AddTransient<ICommentService, CommentService>();
 
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = this.Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = this.Configuration["Authentication:Facebook:AppSecret"];
+            });
+            
             services.AddSignalR();
 
             services.AddAutoMapper();
