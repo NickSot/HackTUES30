@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GoodGuysCommunity.Services.Interfaces;
 using GoodGuysCommunity.Web.Infrastructure.Extensions;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +10,12 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
     public class ManageController : ResourcesBaseController
     {
         private readonly IResourceManager resourceManager;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public ManageController(IResourceManager resourceManager)
+        public ManageController(IResourceManager resourceManager, IHostingEnvironment hostingEnvironment)
         {
             this.resourceManager = resourceManager;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         [HttpPost]
@@ -35,10 +35,11 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
         }
 
 
-        public FileResult DownloadResource(string CurrentPath) {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(CurrentPath);
+        public FileResult DownloadResource(string currentPath)
+        {
+            byte[] fileBytes = System.IO.File.ReadAllBytes(this.hostingEnvironment.WebRootPath + currentPath);
 
-            string[] arr = CurrentPath.Split("/");
+            string[] arr = currentPath.Split("/");
 
             string fileName = arr[arr.Length - 1];
 
