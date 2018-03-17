@@ -19,6 +19,8 @@
                 liElement.id = "msg";
                 liElement.innerHTML = '<strong>' + encodedName + '</strong>:&nbsp;&nbsp;' + encodedMsg + '<br>';
                 document.getElementById('discussion').appendChild(liElement);
+                $discussion = $('#discussion');
+                $discussion.scrollTop($discussion[0].scrollHeight  + 15);
             });
         })
         .then(function (connection) {

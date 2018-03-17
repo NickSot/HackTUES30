@@ -12,10 +12,15 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
     public class ManageController : ResourcesBaseController
     {
         private readonly IResourceManager resourceManager;
+<<<<<<< HEAD
 		private readonly IHostingEnvironment hostingEnvironment;
         private UserManager<User> users;
 
         public ManageController(IResourceManager resourceManager, IHostingEnvironment hostingEnvironment, UserManager<User> users)
+=======
+        private readonly IHostingEnvironment hostingEnvironment;
+        public ManageController(IResourceManager resourceManager, IHostingEnvironment hostingEnvironment)
+>>>>>>> 6faf528ee9bbe9fc81ddbeaf93b90e8d2f53f6fb
         {
             this.users = users;
             this.hostingEnvironment = hostingEnvironment;
@@ -51,6 +56,7 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
+<<<<<<< HEAD
 
         public IActionResult RemoveFile(int resourceId) {
 
@@ -58,5 +64,8 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
             return RedirectToAction("Index", "Browse");
         }
+=======
+>>>>>>> 6faf528ee9bbe9fc81ddbeaf93b90e8d2f53f6fb
     }
 }
+
