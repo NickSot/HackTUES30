@@ -3,9 +3,9 @@
 
 <a href="/forum/posts/createpost"><button type="button" class="btns" style="background-color: lightgreen;">Post a thread</button></a>
 
-<ul>
+<ul class="ar">
     @foreach (var post in Model)
     {
-        <li>@post.Name <a href="/forum/posts/details/@post.Id">Details</a></li>
+        <li><a href="/forum/posts/details/@post.Id" id="threadlink"><button class="butresults"><i class="fas fa-paper-plane resicon"></i>@post.Name </button></a></li>
     }
 </ul>
