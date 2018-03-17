@@ -8,22 +8,32 @@ using GoodGuysCommunity.Services.Interfaces;
 using System.Linq;
 using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Web.Models.ManageViewModels;
+using System.Threading.Tasks;
 
 namespace GoodGuysCommunity.Web.Controllers
 {
     public class HomeController : Controller
     {
         IPostService postService;
+        IResourceManager resourceManager;
+        UserManager<User> userManager;
 
-        public HomeController(IPostService postService) {
+        public HomeController(IPostService postService, IResourceManager resourceManager, UserManager<User> userManager) {
             this.postService = postService;
+            this.resourceManager = resourceManager;
+            this.userManager = userManager;
         }
 
-        public IActionResult Index(PostsListViewModel model)
+        public async Task<IActionResult> Index(PostsListAndResourcesViewModel model)
         {
             model.posts = this.postService.GetByDate().ToList();
+            model.resources = this.resourceManager.GetByDate().ToList();
+            User user = await this.userManager.FindByNameAsync(User.Identity.Name);
+            model.favouriteResources = user.FavResources.ToList();
             return this.View(model);
         }
+
+        
 
         public IActionResult Error()
         {

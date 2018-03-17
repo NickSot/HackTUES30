@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -21,6 +22,17 @@ namespace GoodGuysCommunity.Services
         {
             this.db = db;
             this.appEnvironment = appEnvironment;
+        }
+
+        public IQueryable<Resource> GetByDate() {
+            IQueryable<Resource> resources = this.db.Resources.OrderBy(p => p.UploadDate).Take(4);
+
+            return resources;
+        }
+
+        public void AddFavourite(int resourceId, string userId) {
+            this.db.Users.Find(userId).FavResources.Add(this.db.Resources.Find(resourceId));
+            this.db.SaveChanges();
         }
 
         public async Task<ResourceFolder> GetAsync(string path)

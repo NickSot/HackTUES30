@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-GoodGuysCommunity.Web-B031D1CD-126D-4CE8-98D1-04570D64847A</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\images\photo-1504353888070-4ee702492320.jpg" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="1.1.2" />
