@@ -3,5 +3,7 @@
 
 <form action="" method="post">
     Add comment: <textarea name="Content"></textarea>
+    <input type="hidden" name="Username" value="@this.User.Identity.Name"/>
+    
     <input type="submit" name="Submit" value="Submit" />
 </form>

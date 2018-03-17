@@ -26,7 +26,6 @@ namespace GoodGuysCommunity.Services
                 Content = Content,
                 AuthorId = AuthorId,
                 PostDate = DateTime.Now
-                
             });
         }
 

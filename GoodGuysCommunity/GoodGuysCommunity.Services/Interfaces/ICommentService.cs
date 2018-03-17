@@ -7,7 +7,7 @@ namespace GoodGuysCommunity.Services.Interfaces
 {
     public interface ICommentService
     {
-        Comment Add(string Content, int CommentId, int PostId);
+        Comment Add(string Content, string AuthorId, int PostId);
         void Update();
     }
 }
