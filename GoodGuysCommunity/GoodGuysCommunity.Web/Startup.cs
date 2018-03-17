@@ -4,7 +4,6 @@ using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
 using GoodGuysCommunity.Web.Areas.Broadcast.Hubs;
-using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -46,6 +45,7 @@ namespace GoodGuysCommunity.Web
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IResourceManager, ResourceManager>();
             services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<IBroadcastService, BroadcastService>();
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
