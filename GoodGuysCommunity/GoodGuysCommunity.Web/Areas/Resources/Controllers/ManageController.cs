@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 using GoodGuysCommunity.Services.Interfaces;
 using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Http;
@@ -29,6 +32,17 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
             await this.resourceManager.AddResourceAsync(currentPath, file.FileName, await file.GetData());
 
             return this.RedirectToAction("Index", "Browse", new { path = currentPath });
+        }
+
+
+        public FileResult DownloadResource(string CurrentPath) {
+            byte[] fileBytes = System.IO.File.ReadAllBytes(CurrentPath);
+
+            string[] arr = CurrentPath.Split("/");
+
+            string fileName = arr[arr.Length - 1];
+
+            return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
     }
 }

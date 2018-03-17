@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
@@ -63,8 +64,11 @@ namespace GoodGuysCommunity.Services
             var folder = await this.db.ResourceFolders.FirstOrDefaultAsync(f => f.Path == currentPath);
             folder.Resources.Add(resource);
 
+            //string[] pathArr = name.Split("\\");
+
             var resourcesPath = "/resources" + currentPath + name;
-            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath))
+
+            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath)) 
             {
                 await file.WriteAsync(bytes, 0, bytes.Length);
             }
