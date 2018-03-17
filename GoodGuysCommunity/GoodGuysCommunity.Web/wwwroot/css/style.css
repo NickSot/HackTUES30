@@ -100,7 +100,6 @@
 }
 input {
     padding: 12px 20px;
-    margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -231,14 +230,12 @@ input {
     font-family: 'Open Sans', sans-serif;
     font-size: 19px;
     text-align: left;
-    border-style: solid;
-    border-width: 10px;
 
-    width: 700px;
-    height: 800px;
     overflow: hidden;
     padding: 10px;
     position: relative;
+
+    flex: 1;
 }
     #discussion:hover {
         overflow-y: scroll;
@@ -246,4 +243,28 @@ input {
 
 #chatbox {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-left: solid 1px black;
+    padding: 0 5px;
+}
+
+.send-line {
+    display: flex;
+}
+
+.send-line #message {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.video-chat-wrapper {
+    display: flex;
+    height: 80vh;
+}
+
+.video-js {
+    width: 55% !important;
+    height: auto !important;
 }
