@@ -25,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Broadcast\Views\Home\" />
     <Folder Include="Areas\Resources\Views\Browse\" />
     <Folder Include="wwwroot\resources\" />
   </ItemGroup>

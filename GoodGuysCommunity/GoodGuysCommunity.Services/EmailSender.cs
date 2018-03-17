@@ -12,9 +12,6 @@ namespace GoodGuysCommunity.Services
         private const string EmailAdress = "goodguyscommunity@gmail.com";
         private const string Password = "goodguyscommunitypassword";
         private const string Username = "goodguyscommunity";
-        //private const string EmailAdress = "pixelartwars@gmail.com";
-        //private const string Password = "pixelartwarssender";
-        //private const string Username = "PixelArtWars";
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {

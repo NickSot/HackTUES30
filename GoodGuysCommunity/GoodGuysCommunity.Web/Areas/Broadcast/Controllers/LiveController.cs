@@ -33,14 +33,17 @@ namespace GoodGuysCommunity.Web.Areas.Broadcast.Controllers
                 return this.BadRequest("No existing user");
             }
 
-            var key = await this.broadcastService.GetStreamKeyAsync(username);
-
-
-
             if (!await this.userManager.IsInRoleAsync(user, "Streamer"))
             {
                 return this.BadRequest("User is not a streamer");
             }
+
+            if (!user.IsLive)
+            {
+                return this.BadRequest("User not live");
+            }
+
+            var key = await this.broadcastService.GetStreamKeyAsync(username);
 
             return this.View(model: key);
         }

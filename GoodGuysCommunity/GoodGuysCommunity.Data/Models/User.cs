@@ -9,6 +9,8 @@ namespace GoodGuysCommunity.Data.Models
     {
         public string StreamKey { get; set; } = Guid.NewGuid().ToString();
 
+        public bool IsLive { get; set; }
+
         public ICollection<Post> Posts { get; set; } = new HashSet<Post>();
 
         public ICollection<Comment> Comments { get; set; } = new HashSet<Comment>();
