@@ -10,10 +10,10 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
     public class ManageController : ResourcesBaseController
     {
         private readonly IResourceManager resourceManager;
-        private readonly IHostingEnvironment hostingEnvironment;
-
+		private readonly IHostingEnvironment hostingEnvironment;
         public ManageController(IResourceManager resourceManager, IHostingEnvironment hostingEnvironment)
         {
+            this.hostingEnvironment = hostingEnvironment;
             this.resourceManager = resourceManager;
             this.hostingEnvironment = hostingEnvironment;
         }
@@ -45,5 +45,6 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
+}
     }
 }

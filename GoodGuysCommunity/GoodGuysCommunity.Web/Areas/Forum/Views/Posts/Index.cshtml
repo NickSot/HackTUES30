@@ -5,6 +5,6 @@
 <ul class="ar">
     @foreach (var post in Model)
     {
-        <li><a href="/forum/posts/details/@post.Id" id="threadlink"><button class="butforum"><i class="fas fa-paper-plane resicon"></i>@post.Name </button></a></li>
+        <li class="butforum"><a href="/forum/posts/details/@post.Id" id="threadlink"><i class="fas fa-paper-plane resicon"></i>@post.Name</a></li>
     }
 </ul>

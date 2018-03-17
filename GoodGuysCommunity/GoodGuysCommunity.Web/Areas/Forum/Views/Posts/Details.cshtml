@@ -2,13 +2,13 @@
 
 <h1 id="forumtitle">@Model.Name</h1>
 <br />
-<p id="forumcontent">@Model.Content</p>
+ <p id="forumcontent">@Model.Content</p>
 <br />
 
 <div>
     @foreach (var comment in Model.Comments)
     {
-        <div>@comment.Content</div>
+        <div>@comment.Content ~ @comment.Author.UserName , @comment.CommentDate</div>
     }
 </div>
 <form action="/forum/comments/add" method="post">
