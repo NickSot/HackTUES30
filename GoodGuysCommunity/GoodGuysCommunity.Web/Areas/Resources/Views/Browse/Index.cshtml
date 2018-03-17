@@ -42,7 +42,7 @@
             <ul style="list-style-type: none;">
                 @foreach (var resource in Model.Resources)
                 {
-                    <li><a href="/resources/manage/downloadresource?currentpath=/resources/@resource.FilePath" class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name by @resource.AuthorName</a> <a href="/resources/manage/removefile?resourceid=@resource.Id">Delete</a></li>
+                    <li><a href="/resources/manage/downloadresource?currentpath=/resources/@resource.FilePath"><button class="fileresults"><i class="fas fa-file resicon"></i>"Resource - @resource.Name by @resource.AuthorName</button></a> <a href="/resources/manage/removefile?resourceid=@resource.Id"><button class="btns" id="delbut">Delete</button></a></li>
                 }
             </ul>
         </div>
