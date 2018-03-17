@@ -5,6 +5,7 @@ using GoodGuysCommunity.Data.Models;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace GoodGuysCommunity.Services
 {
@@ -19,6 +20,12 @@ namespace GoodGuysCommunity.Services
         public IQueryable<Post> GetAll()
         {
             return this.db.Posts.AsQueryable();
+        }
+
+        public IQueryable<Post> GetByDate() {
+            IQueryable<Post> posts = this.db.Posts.Include(p => p.Author).OrderBy(p => p.PostDate).Take(4);
+
+            return posts;
         }
 
         public void Add(string Name, string Content, string AuthorId) {

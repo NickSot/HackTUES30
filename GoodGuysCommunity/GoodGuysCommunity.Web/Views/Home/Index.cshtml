@@ -1,19 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@{ViewData["Title"] = "Home Page"; }
 
+@model PostsListViewModel
 
-   
-    
-    <!--<div id="navbarback">
-         <nav id="navbardiv">
-            <span><a href="http://google.com"><p class="navb">Начало</p></a></span>
-            <span><a href="http://google.com"><p class="navb">Ресурси</p></a></span>
-            <span><a href="http://google.com"><p class="navb">Форум</p></a></span>
-            <span><a href="http://google.com"><p class="navb">Регистрация</p></a></span>
-            <span><a href="http://google.com"><p class="navb">Login</p></a></span>
-        </nav> 
-    </div>-->
     <div id="sidebar">
         <a asp-area="broadcast" asp-controller="live" asp-action="watch"><img src="~/images/buttonbeta.png" id="streamimage"></a>
             <div id="forumNewest">
@@ -21,6 +9,13 @@
                 <div class="forumcontent"><p class="threadtitle">HTML и CSS не правят контакт</p></div>
                 <div class="forumcontent"><p class="threadtitle">Блабла</p></div>
                 <div class="forumcontent"><p class="threadtitle">fedw</p></div>
+            </div>
+
+            <div>
+                @foreach (var post in Model.posts) { 
+                    <a>@post.Author.UserName : @post.Name</a>
+                    <br>
+                }
             </div>
 </div>
 

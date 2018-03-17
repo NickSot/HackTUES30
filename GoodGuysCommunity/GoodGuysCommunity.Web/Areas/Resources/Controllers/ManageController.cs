@@ -66,7 +66,6 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
         public IActionResult RemoveFile(int resourceId)
         {
-
             this.resourceManager.RemoveResource(this.User.Identity.Name, resourceId);
 
             return RedirectToAction("Index", "Browse");
