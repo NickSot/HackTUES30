@@ -46,7 +46,9 @@ namespace GoodGuysCommunity.Web
             services.AddTransient<IPostService, PostService>();
             services.AddTransient<IResourceManager, ResourceManager>();
             services.AddTransient<ICommentService, CommentService>();
-            services.AddTransient<IBroadcastService, BroadcastService>();
+
+            services.AddSignalR();
+
             services.AddAutoMapper();
 
             services.AddMvc();
@@ -83,10 +85,10 @@ namespace GoodGuysCommunity.Web
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            //app.UseSignalR(routes =>
-            //{
-            //    routes.MapHub<ChatHub>("/chat");
-            //});
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<ChatHub>("/chat");
+            });
         }
     }
 }

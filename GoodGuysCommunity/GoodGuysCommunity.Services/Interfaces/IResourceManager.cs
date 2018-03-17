@@ -8,6 +8,6 @@ namespace GoodGuysCommunity.Services.Interfaces
         //IEnumerable<R> GetResources();
         Task<ResourceFolder> GetAsync(string path);
         Task AddFolderAsync(string currentPath, string name);
-        Task AddResourceAsync(string currentPath, string name, string extension, byte[] bytes);
+        Task AddResourceAsync(string currentPath, string name, byte[] bytes);
     }
 }

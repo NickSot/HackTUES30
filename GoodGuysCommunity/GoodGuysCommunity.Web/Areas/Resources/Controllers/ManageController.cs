@@ -26,7 +26,7 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
         [HttpPost]
         public async Task<IActionResult> AddResource(IFormFile file, string currentPath)
         {
-            await this.resourceManager.AddResourceAsync(currentPath, file.FileName, file.FileName, await file.GetData());
+            await this.resourceManager.AddResourceAsync(currentPath, file.FileName, await file.GetData());
 
             return this.RedirectToAction("Index", "Browse", new { path = currentPath });
         }

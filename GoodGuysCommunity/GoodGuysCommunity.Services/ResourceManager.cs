@@ -51,7 +51,7 @@ namespace GoodGuysCommunity.Services
             Directory.CreateDirectory(resourcesPath + folder.Path);
         }
 
-        public async Task AddResourceAsync(string currentPath, string name, string extension, byte[] bytes)
+        public async Task AddResourceAsync(string currentPath, string name, byte[] bytes)
         {
             var resource = new Resource()
             {
