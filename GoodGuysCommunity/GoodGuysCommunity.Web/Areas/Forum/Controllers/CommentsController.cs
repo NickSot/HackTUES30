@@ -12,37 +12,18 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
     public class CommentsController : ForumBaseController
     {
         private ICommentService commentService;
-        private IPostService postService;
-        private UserManager<User> userManager;
 
-        public CommentsController(ICommentService commentService, IPostService postService, UserManager<User> userManager)
+        public CommentsController(ICommentService commentService)
         {
-            this.userManager = userManager;
             this.commentService = commentService;
-            this.postService = postService;
         }
-
-        public IActionResult Index() {
-            var model = this.postService.GetAll().Select(p => new PostDetailsViewModel()
-            {
-                Id = p.Id,
-                Name = p.Name
-            }).FirstOrDefault();
-
-            return this.View(model);
-        }
-
+        
         [HttpPost]
-        public async Task<IActionResult> Index(string Content, string Username, int PostId) {
-            var user = await userManager.FindByNameAsync(Username);
-            
-            var comment = this.commentService.Add(Content, user.Id, PostId);
-            this.commentService.Update();
+        public async Task<IActionResult> Add(string content, string username, int postId)
+        {
+            await this.commentService.Add(content, username, postId);
 
-            this.postService.Update(PostId, comment);
-            this.postService.SaveChanges();
-
-            return RedirectToAction("Details", "Posts", new { Id = PostId});
+            return this.RedirectToAction("Details", "Posts", new { Id = postId });
         }
     }
 }

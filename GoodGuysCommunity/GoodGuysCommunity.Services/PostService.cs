@@ -3,6 +3,8 @@ using GoodGuysCommunity.Services.Interfaces;
 using System.Linq;
 using GoodGuysCommunity.Data.Models;
 using System;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoodGuysCommunity.Services
 {
@@ -30,7 +32,7 @@ namespace GoodGuysCommunity.Services
         }
 
         public void Update(int Id, Comment Comment) {
-            Post post = this.db.Posts.Find(Id);
+            var post = this.db.Posts.Find(Id);
 
             post.Comments.Add(Comment);
         }
@@ -39,5 +41,11 @@ namespace GoodGuysCommunity.Services
             this.db.SaveChanges();
         }
 
+        public async Task<Post> GetByIdAsync(int id)
+        {
+            var post = await this.db.Posts.Include(p => p.Comments).FirstOrDefaultAsync(p => p.Id == id);
+
+            return post;
+        }
     }
 }

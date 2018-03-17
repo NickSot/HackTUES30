@@ -4,32 +4,37 @@ using GoodGuysCommunity.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace GoodGuysCommunity.Services
 {
     public class CommentService: ICommentService
     {
         private ApplicationDbContext db;
+        private readonly UserManager<User> userManager;
 
-        public CommentService(ApplicationDbContext db) {
+        public CommentService(ApplicationDbContext db, UserManager<User> userManager)
+        {
             this.db = db;
+            this.userManager = userManager;
         }
 
-        public Comment Add(string Content, string AuthorId, int PostId) {
-            Comment comment = new Comment();
-            comment.Content = Content;
-            comment.AuthorId = AuthorId;
-            comment.PostId = PostId;
-            comment.Author = this.db.Users.Find(AuthorId);
-            comment.Post = this.db.Posts.Find(PostId);
+        public async Task Add(string Content, string authorname, int PostId)
+        {
+            var author = await this.userManager.FindByNameAsync(authorname);
 
-            this.db.Add(comment);
+            var comment = new Comment
+            {
+                Content = Content,
+                Author = author,
+                PostId = PostId
+            };
 
-            return comment;
+            await this.db.Comments.AddAsync(comment);
+            
+            await this.db.SaveChangesAsync();
         }
-
-        public void Update() {
-            this.db.SaveChanges();
-        }
+        
     }
 }

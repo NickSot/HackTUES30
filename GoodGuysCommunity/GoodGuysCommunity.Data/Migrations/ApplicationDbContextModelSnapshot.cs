@@ -40,7 +40,7 @@ namespace GoodGuysCommunity.Data.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("GoodGuysCommunity.Data.Models.Post", b =>

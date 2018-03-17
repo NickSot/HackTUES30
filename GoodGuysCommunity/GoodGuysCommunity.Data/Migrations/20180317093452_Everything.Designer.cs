@@ -11,8 +11,8 @@ using System;
 namespace GoodGuysCommunity.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180316103731_resourcenames")]
-    partial class resourcenames
+    [Migration("20180317093452_Everything")]
+    partial class Everything
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace GoodGuysCommunity.Data.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comment");
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("GoodGuysCommunity.Data.Models.Post", b =>
@@ -100,7 +100,11 @@ namespace GoodGuysCommunity.Data.Migrations
 
                     b.Property<DateTime>("LastModified");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
+
+                    b.Property<string>("Path")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -139,6 +143,8 @@ namespace GoodGuysCommunity.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("StreamKey");
 
                     b.Property<bool>("TwoFactorEnabled");
 
