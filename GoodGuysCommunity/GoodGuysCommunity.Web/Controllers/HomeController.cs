@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using GoodGuysCommunity.Web.Areas.Forum.Models;
 using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
+using System.Linq;
+using GoodGuysCommunity.Data.Models;
+using GoodGuysCommunity.Web.Models.ManageViewModels;
 
 namespace GoodGuysCommunity.Web.Controllers
 {
@@ -16,10 +19,10 @@ namespace GoodGuysCommunity.Web.Controllers
             this.postService = postService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(PostsListViewModel model)
         {
-            
-            return this.View();
+            model.posts = this.postService.GetByDate().ToList();
+            return this.View(model);
         }
 
         public IActionResult Error()

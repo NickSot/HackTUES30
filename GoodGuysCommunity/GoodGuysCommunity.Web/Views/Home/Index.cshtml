@@ -1,6 +1,6 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@{ViewData["Title"] = "Home Page"; }
+
+@model PostsListViewModel
 
     <div id="sidebar">
         <a asp-area="broadcast" asp-controller="live" asp-action="watch"><img src="~/images/buttonbeta.png" id="streamimage"></a>
@@ -12,7 +12,10 @@
             </div>
 
             <div>
-                
+                @foreach (var post in Model.posts) { 
+                    <a>@post.Author.UserName : @post.Name</a>
+                    <br>
+                }
             </div>
 </div>
 

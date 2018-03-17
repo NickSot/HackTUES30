@@ -23,7 +23,7 @@ namespace GoodGuysCommunity.Services
         }
 
         public IQueryable<Post> GetByDate() {
-            IQueryable<Post> posts = this.db.Posts.Include(p => p.Author).Include(p => p.Content).Include(p => p.PostDate).OrderBy(p => p.PostDate).Take(4);
+            IQueryable<Post> posts = this.db.Posts.Include(p => p.Author).OrderBy(p => p.PostDate).Take(4);
 
             return posts;
         }
