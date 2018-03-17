@@ -1,18 +1,22 @@
-﻿<video id="livestream" class="video-js vjs-default-skin vjs-big-play-centered"
-       controls autoplay preload="auto" width="600" height="300"
-       data-setup='{"techorder" : ["flash"] }'>
-    <source src="rtmp://94.156.157.104:1935/live/test" type="rtmp/mp4">
-</video>
+<div class="video-chat-wrapper">
+    ﻿<video id="livestream" class="video-js vjs-default-skin vjs-big-play-centered"
+            controls autoplay preload="auto" width="600" height="300"
+            data-setup='{"techorder" : ["flash"] }'>
+        <source src="rtmp://94.156.157.104:1935/live/test" type="rtmp/mp4">
+    </video>
 
-<div class="container" id="chatbox">
-    
-    <!--<input type="hidden" id="displayname" />-->
-    <ul id="discussion"></ul>
-    <input type="text" id="message" />
-    <input type="button" id="sendmessage" value="Send" />
+    <div class="" id="chatbox">
+
+        <!--<input type="hidden" id="displayname" />-->
+        <ul id="discussion"></ul>
+        <div class="send-line">
+            <input type="text" id="message"  onkeypress="if (event.keyCode == 13) { document.getElementById('sendmessage').click(); return false; }"/>
+            <input type="button" id="sendmessage" value="Send" />
+        </div>
+    </div>
+
+    <input type="hidden" id="userneim" value="@this.User.Identity.Name" />
 </div>
-
-<input type="hidden" id="userneim" value="@this.User.Identity.Name"/>
 
 
 @section Scripts{ 
