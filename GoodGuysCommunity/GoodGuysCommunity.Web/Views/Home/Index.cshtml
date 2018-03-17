@@ -1,9 +1,6 @@
 ﻿@{ViewData["Title"] = "Home Page"; }
-
-<<<<<<< HEAD
 @model PostsListAndResourcesViewModel
 
-=======
     <div class="coolpic" id="homepic"></div>
     <div id="sidebar">
         <p class="anotext">Stream</p>
@@ -25,10 +22,10 @@
         </div>
         <div>
             @foreach (var resource in Model.resources)
-        {
-            <a href="">@resource.Author.UserName : @resource.Name</a>
-            <br>
-    }
+            {
+                <a href="">@resource.Author.UserName : @resource.Name</a>
+                <br>
+            }
         </div>
 
     </div>
