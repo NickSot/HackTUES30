@@ -3,6 +3,7 @@ using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
+using GoodGuysCommunity.Web.Areas.Broadcast.Hubs;
 using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -29,7 +30,14 @@ namespace GoodGuysCommunity.Web
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options =>
+                {
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 3;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -74,6 +82,11 @@ namespace GoodGuysCommunity.Web
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            //app.UseSignalR(routes =>
+            //{
+            //    routes.MapHub<ChatHub>("/chat");
+            //});
         }
     }
 }

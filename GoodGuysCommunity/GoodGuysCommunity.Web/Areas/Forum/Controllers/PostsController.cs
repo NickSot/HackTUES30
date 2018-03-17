@@ -47,8 +47,8 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
             return this.RedirectToAction("Index", "Posts");
         }
 
-        public IActionResult Details(int Id) {
-            var post = postsService.GetAll().Where(p => p.Id == Id).FirstOrDefault();
+        public async Task<IActionResult> Details(int id) {
+            var post = await this.postsService.GetByIdAsync(id);
 
             var model = new PostDetailsViewModel()
             {

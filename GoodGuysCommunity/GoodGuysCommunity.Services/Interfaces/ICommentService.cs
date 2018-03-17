@@ -2,12 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GoodGuysCommunity.Services.Interfaces
 {
     public interface ICommentService
     {
-        Comment Add(string Content, string AuthorId, int PostId);
-        void Update();
+        Task Add(string Content, string AuthorId, int PostId);
     }
 }

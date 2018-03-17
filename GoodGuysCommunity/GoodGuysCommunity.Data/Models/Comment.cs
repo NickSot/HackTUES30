@@ -10,9 +10,9 @@ namespace GoodGuysCommunity.Data.Models
         [Required]
         public string Content { get; set; }
 
-        public string AuthorId { get; set; }
-
         public DateTime CommentDate { get; set; }
+
+        public string AuthorId { get; set; }
 
         public User Author { get; set; }
 

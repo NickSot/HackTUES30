@@ -10,4 +10,9 @@
         <div>@comment.Content</div>
      }
 </div>
-<a href="/forum/comments/index/@Model">Add a comment</a>
+<form action="/forum/comments/add" method="post">
+    Add comment: <textarea name="Content"></textarea>
+    <input type="hidden" name="Username" value="@this.User.Identity.Name" />
+    <input type="hidden" name="PostId" value="@Model.Id" />
+    <input type="submit" name="Submit" value="Submit" />
+</form>
