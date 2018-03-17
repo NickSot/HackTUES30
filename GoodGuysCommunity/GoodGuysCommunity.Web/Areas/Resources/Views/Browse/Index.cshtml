@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="~/css/style.css"></head>
 <body id="library">
 <div ><h3 id="resheading">@Model.Name</h3></div>
-<div id="resub">@Model.Path></div>
+<div id="resub" class="breadcrumb">@Model.Path></div>
 <div style="text-align:center"><a href="/resources/browse?path=@prevPath"><button type="button" class="btns" id="backbut">Back</button></a></div>
 <br/>
 <form action="/resources/manage/addfolder" method="post">
@@ -20,10 +20,9 @@
     <input class="btns" type="submit" value="Add folder" />
 </form>
 
-<form action="/resources/manage/addresource" method="post" style = "text-align:center;" enctype="multipart/form-data">
-    <center><input type="file" name="file" placeholder="Choose File"/></center></form>
-<br/>
-<form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
+    <form action="/resources/manage/addresource" method="post" enctype="multipart/form-data">
+        <center><input type="file" name="file" placeholder="Choose File" /></center>
+
     <input type="hidden" name="currentpath" value="@Model.Path" />
     <input class="btns" type="submit" value="Add resource" />
 </form>
@@ -31,18 +30,18 @@
 <br />
     <center>
     <div id="idfolder">
-        <ul style="display:inline;" id="lost">
+        <ul class="ar">
             @foreach (var subfolder in Model.Children)
             {
-                <li><a href="/resources/browse?path=@subfolder.Path" id="resourceslink"><button class="butresults"><i class="fas fa-folder" id="resicon"></i>@subfolder.Name</button></a></li>
+                <li><a href="/resources/browse?path=@subfolder.Path" id="resourceslink"><button class="butresults"><i class="fas fa-folder resicon"></i>@subfolder.Name</button></a></li>
     
             }
         </ul>
 
-        <ul>
+        <ul style="list-style-type: none;">
             @foreach (var resource in Model.Resources)
             {
-                <li>"Resource - @resource.Name</li>
+                <li><button class="fileresults" style="margin-left:75px;"><i class="fas fa-file resicon"></i>"Resource - @resource.Name</button></li>
             }
         </ul>
     </div></center></body>
