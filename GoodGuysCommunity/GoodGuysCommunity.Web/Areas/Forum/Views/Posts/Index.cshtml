@@ -1,4 +1,5 @@
 @model IEnumerable<PostDetailsViewModel>
+<body id="idk">
     <h1 id="forumlogo">Forum</h1>
 <a href="/forum/posts/createpost"><button type="button" class="btns" id="threadpostbut">Post a thread</button></a>
 
@@ -7,4 +8,4 @@
     {
         <li class="butforum"><a href="/forum/posts/details/@post.Id" id="threadlink"><i class="fas fa-paper-plane resicon"></i>@post.Name</a></li>
     }
-</ul>
+</ul></body>

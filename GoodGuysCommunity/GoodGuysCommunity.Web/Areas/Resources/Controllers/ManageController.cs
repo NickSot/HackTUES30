@@ -45,6 +45,5 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
             return File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
-}
     }
 }
