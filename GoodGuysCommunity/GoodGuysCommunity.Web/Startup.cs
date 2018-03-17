@@ -77,7 +77,7 @@ namespace GoodGuysCommunity.Web
             app.UseStaticFiles();
 
             app.UseAuthentication();
-            app.UseDatabaseMigration();
+           // app.UseDatabaseMigration();
 
             app.UseMvc(routes =>
             {
