@@ -1,8 +1,8 @@
 ﻿@model PostDetailsViewModel
 
-<h1>@Model.Name</h1>
+<h1 id="forumtitle">@Model.Name</h1>
 <br />
-<h2>@Model.Content</h2>
+<p id="forumcontent">@Model.Content</p>
 <br />
 
 <div>
@@ -10,4 +10,4 @@
         <div>@comment.Content</div>
      }
 </div>
-<a href="/forum/comments/index/@Model">Add a comment</a>
+<center><a href="/forum/comments/index/@Model"><button class="btns">Comment!</button></a></center>
