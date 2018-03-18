@@ -17,7 +17,7 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var db = serviceScope.ServiceProvider.GetService<ApplicationDbContext>();
-                //db.Database.Migrate();
+                db.Database.Migrate();
                 var userManager = serviceScope.ServiceProvider.GetService<UserManager<User>>();
                 var roleManager = serviceScope.ServiceProvider.GetService<RoleManager<IdentityRole>>();
 

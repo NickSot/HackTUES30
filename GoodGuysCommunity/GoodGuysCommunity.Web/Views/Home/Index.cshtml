@@ -10,17 +10,17 @@
     <div>
         @foreach (var post in Model.Posts)
         {
-            <div class="forumcontent"><a class="threadtitle">@post.AuthorName : @post.Name</a></div>
+            <div class="forumcontent"><a class="threadtitle" href="/forum/posts/details?id = @post.Id">@post.AuthorName : @post.Name</a></div>
         }
     </div>
     <p class="anotext">Latest uploaded resources:</p>
     <div>
         @foreach (var resource in Model.Resources)
             {
-            <a href="/resources/manage/downloadresource?currentpath=/resources/@resource.FilePath">@resource.AuthorName : @resource.Name</a>
-            <br>
-        }
-    </div>
+        <div class="forumcontent">
+            <a href="/resources/manage/downloadresource?currentpath=/resources/@resource.FilePath" class="threadtitle">@resource.AuthorName : @resource.Name</a></div>
+            }
+        </div>
 </div>
 
 
