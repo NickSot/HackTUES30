@@ -5,7 +5,6 @@ using GoodGuysCommunity.Data.Models;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using System.Collections;
 
 namespace GoodGuysCommunity.Services
 {
@@ -23,34 +22,32 @@ namespace GoodGuysCommunity.Services
         }
 
         public IQueryable<Post> GetByDate() {
-            IQueryable<Post> posts = this.db.Posts.Include(p => p.Author).OrderBy(p => p.PostDate).Take(4);
+            var posts = this.db.Posts.Include(p => p.Author).OrderBy(p => p.PostDate).Take(4);
 
             return posts;
         }
 
-        public void Add(string Name, string Content, string AuthorId) {
+        public void Add(string name, string content, string authorId) {
             this.db.Add(new Post()
             {
-                Name = Name,
-                Content = Content,
-                AuthorId = AuthorId,
+                Name = name,
+                Content = content,
+                AuthorId = authorId,
                 PostDate = DateTime.Now
             });
-        }
 
-        public void Update(int Id, Comment Comment) {
-            var post = this.db.Posts.Find(Id);
-
-            post.Comments.Add(Comment);
-        }
-
-        public void SaveChanges() {
             this.db.SaveChanges();
+        }
+
+        public void Update(int id, Comment comment) {
+            var post = this.db.Posts.Find(id);
+
+            post.Comments.Add(comment);
         }
 
         public async Task<Post> GetByIdAsync(int id)
         {
-            var post = await this.db.Posts.Include(p => p.Comments).FirstOrDefaultAsync(p => p.Id == id);
+            var post = await this.db.Posts.Include(p => p.Comments).Include(p => p.Author).FirstOrDefaultAsync(p => p.Id == id);
 
             return post;
         }

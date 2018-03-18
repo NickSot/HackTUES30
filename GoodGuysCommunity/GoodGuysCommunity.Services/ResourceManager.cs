@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
@@ -24,15 +22,11 @@ namespace GoodGuysCommunity.Services
             this.appEnvironment = appEnvironment;
         }
 
-        public IQueryable<Resource> GetByDate() {
-            IQueryable<Resource> resources = this.db.Resources.OrderBy(p => p.UploadDate).Take(4);
+        public IQueryable<Resource> GetByDate()
+        {
+            var resources = this.db.Resources.Include(r => r.Author).OrderBy(p => p.UploadDate).Take(4);
 
             return resources;
-        }
-
-        public void AddFavourite(int resourceId, string userId) {
-            this.db.Users.Find(userId).FavResources.Add(this.db.Resources.Find(resourceId));
-            this.db.SaveChanges();
         }
 
         public async Task<ResourceFolder> GetAsync(string path)
@@ -40,8 +34,9 @@ namespace GoodGuysCommunity.Services
             var root = await this.db
                 .ResourceFolders
                 .Include(f => f.Resources)
+                    .ThenInclude(r => r.Author)
                 .Include(f => f.SubFolders)
-                .ThenInclude(s => s.Child)
+                    .ThenInclude(s => s.Child)
                 .FirstOrDefaultAsync(f => f.Path == path);
 
             return root;
@@ -80,7 +75,7 @@ namespace GoodGuysCommunity.Services
 
             var resourcesPath = "/resources" + currentPath + name;
 
-            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath)) 
+            using (var file = File.Create(this.appEnvironment.WebRootPath + resourcesPath))
             {
                 await file.WriteAsync(bytes, 0, bytes.Length);
             }
@@ -89,14 +84,18 @@ namespace GoodGuysCommunity.Services
         }
 
 
-        public void RemoveResource(string Username, int resourceId) {
-            Resource resource = this.db.Resources.Include(p => p.Author).Where(p => p.Id == resourceId).FirstOrDefault();
+        public bool RemoveResource(string username, int resourceId)
+        {
+            var resource = this.db.Resources.Include(p => p.Author).Where(p => p.Id == resourceId).FirstOrDefault();
 
-            if (Username == resource.Author.UserName)
+            if (username == resource.Author.UserName)
             {
                 this.db.Resources.Remove(resource);
                 this.db.SaveChanges();
+                return true;
             }
+
+            return false;
         }
     }
 }

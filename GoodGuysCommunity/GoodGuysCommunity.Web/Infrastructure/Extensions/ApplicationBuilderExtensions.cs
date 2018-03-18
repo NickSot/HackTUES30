@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
@@ -46,11 +45,11 @@ namespace GoodGuysCommunity.Web.Infrastructure.Extensions
 
                         if (!roleManager.Roles.Any())
                         {
-                            var streamer = new IdentityRole("Streamer");
-                            var admin = new IdentityRole("Admin");
+                            var streamer = new IdentityRole(WebConstants.StreamerRole);
+                            var admin = new IdentityRole(WebConstants.AdministratorRole);
                             await roleManager.CreateAsync(streamer);
                             await roleManager.CreateAsync(admin);
-                            await userManager.AddToRoleAsync(dummyuser, "Streamer");
+                            await userManager.AddToRoleAsync(dummyuser, WebConstants.StreamerRole);
                         }
                        
                         await db.SaveChangesAsync();

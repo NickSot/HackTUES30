@@ -1,39 +1,33 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using GoodGuysCommunity.Web.Models;
-using Microsoft.AspNetCore.Identity;
-using GoodGuysCommunity.Web.Areas.Forum.Models;
-using GoodGuysCommunity.Services;
 using GoodGuysCommunity.Services.Interfaces;
 using System.Linq;
-using GoodGuysCommunity.Data.Models;
+using AutoMapper.QueryableExtensions;
+using GoodGuysCommunity.Web.Models.HomeViewModels;
 using GoodGuysCommunity.Web.Models.ManageViewModels;
-using System.Threading.Tasks;
 
 namespace GoodGuysCommunity.Web.Controllers
 {
     public class HomeController : Controller
     {
-        IPostService postService;
-        IResourceManager resourceManager;
-        UserManager<User> userManager;
+        private readonly IPostService postService;
+        private readonly IResourceManager resourceManager;
 
-        public HomeController(IPostService postService, IResourceManager resourceManager, UserManager<User> userManager) {
+        public HomeController(IPostService postService, IResourceManager resourceManager) {
             this.postService = postService;
             this.resourceManager = resourceManager;
-            this.userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(PostsListAndResourcesViewModel model)
+        public IActionResult Index()
         {
-            model.posts = this.postService.GetByDate().ToList();
-            model.resources = this.resourceManager.GetByDate().ToList();
-            User user = await this.userManager.FindByNameAsync(User.Identity.Name);
-            model.favouriteResources = user.FavResources.ToList();
+            var model = new PostsListAndResourcesViewModel
+            {
+                Posts = this.postService.GetByDate().ProjectTo<PostListViewModel>().ToList(),
+                Resources = this.resourceManager.GetByDate().ProjectTo<ResourceListViewModel>().ToList()
+            };
             return this.View(model);
         }
-
-        
 
         public IActionResult Error()
         {

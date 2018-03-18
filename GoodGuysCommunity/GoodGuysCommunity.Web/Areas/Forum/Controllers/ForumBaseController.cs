@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
 {
-    [Area("Forum")]
+    [Area(WebConstants.ForumArea)]
+    [Authorize]
     public abstract class ForumBaseController : Controller
     {
         

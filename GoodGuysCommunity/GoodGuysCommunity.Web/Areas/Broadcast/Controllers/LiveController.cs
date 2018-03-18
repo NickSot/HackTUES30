@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services.Interfaces;
+using GoodGuysCommunity.Web.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,24 +24,28 @@ namespace GoodGuysCommunity.Web.Areas.Broadcast.Controllers
         {
             if (string.IsNullOrEmpty(username))
             {
-                return this.BadRequest("No username");
+                this.TempData.AddErrorMessage("No username given");
+                return this.RedirectToAction("Index", "Home");
             }
 
 
             var user = await this.userManager.FindByNameAsync(username);
             if (user == null)
             {
-                return this.BadRequest("No existing user");
+                this.TempData.AddErrorMessage("User does not exist");
+                return this.RedirectToAction("Index", "Home");
             }
 
-            if (!await this.userManager.IsInRoleAsync(user, "Streamer"))
+            if (!await this.userManager.IsInRoleAsync(user, WebConstants.StreamerRole))
             {
-                return this.BadRequest("User is not a streamer");
+                this.TempData.AddErrorMessage("User is not a streamer");
+                return this.RedirectToAction("Index", "Home");
             }
 
             if (!user.IsLive)
             {
-                return this.BadRequest("User not live");
+                this.TempData.AddErrorMessage("User is offline");
+                return this.RedirectToAction("Index", "Home");
             }
 
             var key = await this.broadcastService.GetStreamKeyAsync(username);

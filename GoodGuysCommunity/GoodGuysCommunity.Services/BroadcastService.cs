@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services.Interfaces;
@@ -25,11 +23,6 @@ namespace GoodGuysCommunity.Services
             var user = await this.userManager.FindByNameAsync(username);
 
             return user?.StreamKey;
-        }
-
-        public async Task<IEnumerable<User>> GetLiveStreamers()
-        {
-            return await this.userManager.GetUsersInRoleAsync("Streamer");
         }
 
         public async Task GoLive(string username)

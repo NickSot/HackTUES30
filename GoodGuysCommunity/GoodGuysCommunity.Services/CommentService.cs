@@ -1,9 +1,6 @@
 ﻿using GoodGuysCommunity.Data;
 using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
@@ -11,7 +8,7 @@ namespace GoodGuysCommunity.Services
 {
     public class CommentService: ICommentService
     {
-        private ApplicationDbContext db;
+        private readonly ApplicationDbContext db;
         private readonly UserManager<User> userManager;
 
         public CommentService(ApplicationDbContext db, UserManager<User> userManager)
@@ -20,15 +17,15 @@ namespace GoodGuysCommunity.Services
             this.userManager = userManager;
         }
 
-        public async Task Add(string Content, string authorname, int PostId)
+        public async Task Add(string content, string authorname, int postId)
         {
             var author = await this.userManager.FindByNameAsync(authorname);
 
             var comment = new Comment
             {
-                Content = Content,
+                Content = content,
                 Author = author,
-                PostId = PostId
+                PostId = postId
             };
 
             await this.db.Comments.AddAsync(comment);

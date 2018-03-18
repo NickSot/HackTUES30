@@ -1,35 +1,26 @@
 ﻿@{ViewData["Title"] = "Home Page"; }
-@model PostsListAndResourcesViewModel
+@using GoodGuysCommunity.Web.Models.HomeViewModels
+@model GoodGuysCommunity.Web.Models.HomeViewModels.PostsListAndResourcesViewModel
 
-    <div class="coolpic" id="homepic"></div>
-    <div id="sidebar">
-        <p class="anotext">Stream</p>
-        <a asp-area="broadcast" asp-controller="live" asp-action="watch"><img src="~/images/buttonbeta.png" id="streamimage"></a>
-        <p class="anotext">Latest from forum:</p>
-        <div>
-            @foreach (var post in Model.posts)
+<div class="coolpic" id="homepic"></div>
+<div id="sidebar">
+    <p class="anotext">Stream</p>
+    <a asp-area="broadcast" asp-controller="live" asp-action="watch"><img src="~/images/buttonbeta.png" id="streamimage"></a>
+    <p class="anotext">Latest from forum:</p>
+    <div>
+        @foreach (var post in Model.Posts)
         {
-            <div class="forumcontent"><a class="threadtitle">@post.Author.UserName : @post.Name</a></div>
-    }
-        </div>
-        <p class="anotext">Latest uploaded resources:</p>
-        <div>
-            @foreach (var resource in Model.resources)
-            {
-                <a href="">@resource.Author.UserName : @resource.Name</a>
-                <br>
-            }
-        </div>
-        <p class="anotext">Favourite resources:</p>
-        <div>
-            @foreach (var resource in Model.favouriteResources)
-            {
-                <a href="">@resource.Name</a>
-                <br>
-            }
-        </div>
-
-
+            <div class="forumcontent"><a class="threadtitle">@post.AuthorName : @post.Name</a></div>
+        }
     </div>
+    <p class="anotext">Latest uploaded resources:</p>
+    <div>
+        @foreach (var resource in Model.Resources)
+            {
+            <a href="/resources/manage/downloadresource?currentpath=/resources/@resource.FilePath">@resource.AuthorName : @resource.Name</a>
+            <br>
+        }
+    </div>
+</div>
 
 

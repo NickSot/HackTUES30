@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GoodGuysCommunity.Services.Interfaces;
-using GoodGuysCommunity.Services;
-using GoodGuysCommunity.Data.Models;
-using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
-using GoodGuysCommunity.Web.Areas.Forum.Models;
-using System.Linq;
+using GoodGuysCommunity.Web.Infrastructure.Extensions;
 
 namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
 {
@@ -22,6 +18,8 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
         public async Task<IActionResult> Add(string content, string username, int postId)
         {
             await this.commentService.Add(content, username, postId);
+            
+            this.TempData.AddSuccessMessage("Comment added");
 
             return this.RedirectToAction("Details", "Posts", new { Id = postId });
         }

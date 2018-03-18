@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
-using GoodGuysCommunity.Data.Models;
 using GoodGuysCommunity.Services.Interfaces;
 using GoodGuysCommunity.Web.Areas.Resources.Models;
 using Microsoft.AspNetCore.Mvc;

@@ -30,13 +30,14 @@
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-collapse collapse">
             <a asp-area="" asp-controller="Home" asp-action="Index"><img src="~/images/logo.png" id="logo"></a>
-            
+
             @await Html.PartialAsync("_LoginPartial")
         </div>
 
     </nav>
 
     <div class="container body-content">
+        @await Html.PartialAsync("_AlertMessages")
         @RenderBody()
     </div>
 

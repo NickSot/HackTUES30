@@ -1,25 +1,27 @@
-<div class="row">
-    <div class="col-md-6">
-        <div class="video-chat-wrapper">
-            <video id="livestream" class="video-js vjs-default-skin vjs-big-play-centered"
-                   controls autoplay preload="auto"
-                   data-setup='{"techorder" : ["flash"] }'>
-                <source src="rtmp://94.156.157.104:1935/live/@Model" type="rtmp/mp4">
-            </video>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="container" id="chatbox">
-
-            <!--<input type="hidden" id="displayname" />-->
-            <ul id="discussion"></ul>
-            <div class="send-line">
-                <input type="text" id="message"  onkeypress="if (event.keyCode == 13) { document.getElementById('sendmessage').click(); return false; }"/>
-                <button type="button" class="btns" id="sendmessage" value="Send">Send</button>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="video-chat-wrapper">
+                <video id="livestream" class="video-js vjs-default-skin vjs-big-play-centered"
+                       controls autoplay preload="auto"
+                       data-setup='{"techorder" : ["flash"] }'>
+                    <source src="rtmp://94.156.157.104:1935/live/@Model" type="rtmp/mp4">
+                </video>
             </div>
+        </div>
+        <div class="col-md-12">
+            <div class="container" id="chatbox">
 
-            <input type="hidden" id="userneim" value="@this.User.Identity.Name" />
-            <input type="hidden" id="room" value="@Model" />
+                <!--<input type="hidden" id="displayname" />-->
+                <ul id="discussion"></ul>
+                <div class="send-line">
+                    <input type="text" id="message"  onkeypress="if (event.keyCode == 13) { document.getElementById('sendmessage').click(); return false; }"/>
+                    <button type="button" class="btns" id="sendmessage" value="Send">Send</button>
+                </div>
+
+                <input type="hidden" id="userneim" value="@this.User.Identity.Name" />
+                <input type="hidden" id="room" value="@Model" />
+            </div>
         </div>
     </div>
 </div>

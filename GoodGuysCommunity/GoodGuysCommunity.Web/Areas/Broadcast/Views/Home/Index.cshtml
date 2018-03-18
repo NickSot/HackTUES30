@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<StreamerListViewModel>
 @inject UserManager<User> UserManager
 
-@if (this.User.IsInRole("Streamer"))
+@if (this.User.IsInRole(WebConstants.StreamerRole))
 {
     if ((await this.UserManager.FindByNameAsync(this.User.Identity.Name)).IsLive)
     {

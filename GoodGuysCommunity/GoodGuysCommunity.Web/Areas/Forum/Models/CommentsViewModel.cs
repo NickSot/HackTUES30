@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;namespace GoodGuysCommunity.Web.Areas.Forum.Models
+﻿namespace GoodGuysCommunity.Web.Areas.Forum.Models
 {
     public class CommentsViewModel
     {

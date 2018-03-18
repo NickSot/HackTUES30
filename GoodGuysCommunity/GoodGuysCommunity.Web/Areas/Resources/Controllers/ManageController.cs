@@ -12,12 +12,12 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
     public class ManageController : ResourcesBaseController
     {
         private readonly IResourceManager resourceManager;
-		private readonly IHostingEnvironment hostingEnvironment;
-        private UserManager<User> users;
+        private readonly IHostingEnvironment hostingEnvironment;
+        private readonly UserManager<User> userManager;
 
-        public ManageController(IResourceManager resourceManager, IHostingEnvironment hostingEnvironment, UserManager<User> users)
+        public ManageController(IResourceManager resourceManager, IHostingEnvironment hostingEnvironment, UserManager<User> userManager)
         {
-            this.users = users;
+            this.userManager = userManager;
             this.hostingEnvironment = hostingEnvironment;
             this.resourceManager = resourceManager;
         }
@@ -25,11 +25,15 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFolder(string name, string currentPath)
         {
-            if (name == null) {
-                return this.RedirectToAction("Index", "Browse");
+            if (name == null)
+            {
+                this.TempData.AddErrorMessage("You cannot create a folder without a name");
             }
-
-            await this.resourceManager.AddFolderAsync(currentPath, name);
+            else
+            {
+                await this.resourceManager.AddFolderAsync(currentPath, name);
+                this.TempData.AddSuccessMessage($"You created the {name} folder");
+            }
 
             return this.RedirectToAction("Index", "Browse", new { path = currentPath });
         }
@@ -37,16 +41,15 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
         [HttpPost]
         public async Task<IActionResult> AddResource(IFormFile file, string currentPath)
         {
-            if (file == null) {
-                return this.RedirectToAction("Index", "Browse");
+            if (file == null)
+            {
+                this.TempData.AddErrorMessage("You must select a file to upload");
+                return this.RedirectToAction("Index", "Browse", new { path = currentPath });
             }
 
-            if (currentPath == null) {
-                return this.RedirectToAction("Index", "Browse");
-            }
-
-            var user = await this.users.FindByNameAsync(this.User.Identity.Name);
+            var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
             await this.resourceManager.AddResourceAsync(currentPath, user.Id, file.FileName, await file.GetData());
+            this.TempData.AddSuccessMessage($"File {file.FileName} uploaded");
 
             return this.RedirectToAction("Index", "Browse", new { path = currentPath });
         }
@@ -54,27 +57,32 @@ namespace GoodGuysCommunity.Web.Areas.Resources.Controllers
 
         public FileResult DownloadResource(string currentPath)
         {
-            byte[] fileBytes = System.IO.File.ReadAllBytes(this.hostingEnvironment.WebRootPath + currentPath);
+            var fileBytes = System.IO.File.ReadAllBytes(this.hostingEnvironment.WebRootPath + currentPath);
 
-            string[] arr = currentPath.Split("/");
+            var arr = currentPath.Split("/");
 
-            string fileName = arr[arr.Length - 1];
+            var fileName = arr[arr.Length - 1];
 
             return this.File(fileBytes, System.Net.Mime.MediaTypeNames.Application.Octet, fileName);
         }
 
-
-        public IActionResult RemoveFile(int resourceId)
+        public IActionResult RemoveFile(int resourceId, string currentPath)
         {
-            this.resourceManager.RemoveResource(this.User.Identity.Name, resourceId);
+            var deleted = this.resourceManager.RemoveResource(this.User.Identity.Name, resourceId);
 
-            return RedirectToAction("Index", "Browse");
-        }
-
-        public async Task AddFavResource(int resourceId) {
-            User user = await this.users.FindByNameAsync(User.Identity.Name);
-            this.resourceManager.AddFavourite(resourceId, user.Id);
+            if (deleted)
+            {
+                this.TempData.AddSuccessMessage($"File deleted");
+            }
+            else
+            {
+                this.TempData.AddErrorMessage($"You cannot delete a file that is not yours");
+            }
+            
+            return this.RedirectToAction("Index", "Browse", new { path = currentPath });
         }
     }
 }
+
+
 

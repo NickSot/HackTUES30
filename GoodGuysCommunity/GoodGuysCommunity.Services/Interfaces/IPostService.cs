@@ -8,9 +8,8 @@ namespace GoodGuysCommunity.Services.Interfaces
     {
         IQueryable<Post> GetAll();
         IQueryable<Post> GetByDate();
-        void Add(string Name, string Content, string AuthorId);
-        void Update(int Id, Comment Comment);
-        void SaveChanges();
+        void Add(string name, string content, string authorId);
+        void Update(int id, Comment comment);
         Task<Post> GetByIdAsync(int id);
     }
 }

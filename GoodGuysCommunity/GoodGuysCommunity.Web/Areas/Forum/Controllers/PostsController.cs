@@ -1,14 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GoodGuysCommunity.Services.Interfaces;
-using GoodGuysCommunity.Services;
-using GoodGuysCommunity.Data;
 using System.Linq;
 using GoodGuysCommunity.Web.Areas.Forum.Models;
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using GoodGuysCommunity.Data.Models;
 using System;
+using GoodGuysCommunity.Web.Infrastructure.Extensions;
 
 namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
 {
@@ -43,7 +41,8 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
         public async Task<IActionResult> CreatePost(PostDetailsViewModel model) {
             var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
             this.postsService.Add(model.Name, model.Content, user.Id);
-            this.postsService.SaveChanges();
+            this.TempData.AddSuccessMessage("Post added");
+
             return this.RedirectToAction("Index", "Posts");
         }
 
@@ -59,7 +58,7 @@ namespace GoodGuysCommunity.Web.Areas.Forum.Controllers
                 SubmitDate = DateTime.Now
             };
 
-            return View(model);
+            return this.View(model);
         }
     }
 }
