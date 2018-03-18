@@ -234,24 +234,27 @@ input {
     font-family: 'Open Sans', sans-serif;
     font-size: 19px;
     text-align: left;
-
     overflow: hidden;
     padding: 10px;
     position: relative;
-
     flex: 1;
+
 }
     #discussion:hover {
         overflow-y: scroll;
     }
 
 #chatbox {
-    position: relative;
     display: flex;
     flex-direction: column;
     flex: 1;
+    max-height: 500px;
     border-left: solid 1px black;
     padding: 0 5px;
+    height: 500px;
+    margin-top: 20px;
+    text-align:center;
+
 }
 
 .send-line {
@@ -309,6 +312,7 @@ input {
     border-style: solid;
     border-color: #6468D6;
     border-width: 0px 0px 10px 0px;
+    margin: 0 auto;
 }
 #sendmessage {
     background-color: black;
