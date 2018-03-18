@@ -35,13 +35,9 @@
                 <div class="form-group">
                     <button type="submit" class="btns final">Log in</button>
                 </div>
-                <div class="form-group">
-                    <p>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]"><button type="submit" class="btns butsec">Register</button></a>
-                        <a asp-action="ForgotPassword"><button type="submit" class="btns butsec">Forgot your password?</button></a>
-                    </p>
-                </div>
             </form>
+            <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]"><button type="submit" class="btns butsec">Register</button></a>
+            <a asp-action="ForgotPassword"><button type="submit" class="btns butsec">Forgot your password?</button></a>
         </section>
     </div>
     <div class="col-md-6">
