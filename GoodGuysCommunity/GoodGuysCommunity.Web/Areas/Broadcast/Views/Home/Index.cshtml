@@ -1,0 +1,32 @@
+﻿@model IEnumerable<StreamerListViewModel>
+@inject UserManager<User> UserManager
+
+@if (this.User.IsInRole(WebConstants.StreamerRole))
+{
+    if ((await this.UserManager.FindByNameAsync(this.User.Identity.Name)).IsLive)
+    {
+        <a class="btn btn-primary" href="#" disabled>You are live!</a>
+        <a class="btn btn-warning" href="/broadcast/home/endstream">End stream</a>
+    }
+    else
+    {
+        <a class="btn btn-primary" href="/broadcast/home/golive">Go live</a>
+    }
+}
+else
+{
+    <p>You are not a streamer. To apply for a streamer role in our amazing site contact goodguyscommunity@gmail.com!</p>
+}
+
+<ul class="list-group">
+    @foreach (var streamer in Model)
+    {
+        <li class="list-group-item">
+            @streamer.UserName
+            @if (streamer.IsLive)
+            {
+                <a href="/broadcast/live/watch?username=@streamer.UserName" class="btn btn-success">Live!</a>
+            }
+        </li>
+    }
+</ul>

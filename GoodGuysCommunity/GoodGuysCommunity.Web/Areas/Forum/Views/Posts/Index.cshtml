@@ -1,0 +1,16 @@
+@model IEnumerable<PostDetailsViewModel>
+<body id="idk">
+    <h1 id="forumlogo">Forum</h1>
+    <div id="forumside">
+        <a href="/forum/posts/createpost"><button type="button" class="btns" id="threadpostbut"><i class="fas fa-keyboard resicon"></i>Post a thread</button></a>
+        <p class="anotext">Stream</p>
+        <a asp-area="broadcast" asp-controller="live" asp-action="watch"><img src="~/images/buttonbeta.png" id="streamimage"></a>
+    </div>
+
+<ul class="ar">
+    @foreach (var post in Model)
+    {
+        <li class="butforum"><a href="/forum/posts/details/@post.Id" id="threadlink"><i class="fas fa-edit resicon"></i>@post.Name</a></li>
+    }
+</ul>
+</body>

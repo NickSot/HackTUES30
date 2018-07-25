@@ -1,0 +1,371 @@
+#logo {
+    font-family: 'Fredoka One', cursive;
+    text-align: center;
+    font-size: 55px;
+    margin-bottom: 10px;
+    color: rgb(101,175,214);
+}
+
+.navbar-header {
+    text-align: center;
+}
+.container {
+    text-align: center;
+    color: black;
+    display: inline;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#navbarback {
+    background-color: rgb(100,104,214);
+    width: 100vw;
+    height: 50px;}
+
+    #sidebar {
+      float: right;
+      width: 400px;
+      height: 600px;
+      margin-right: 10px;
+      margin-top: 15px;
+    }
+    #streamimage {
+      width: 100%;
+      height: auto;
+      max-width: 100%;;
+    }
+#logo {
+    height:50px;
+}
+    .forumcontent {
+      padding: 10px;
+    }
+    .forumcontent:nth-child(2n) {
+        background-color: rgb(245, 247, 248);
+    }
+    .threadtitle {
+      font-family: 'Comfortaa', cursive;
+      font-size: 15px;
+      font-weight: bold;
+    }
+  #forumNewest {
+    margin-top: 10px;
+    border-style: solid;
+    border-width: 7px 0px 0px 0px;
+    border-color: rgb(100,104,214);
+  }
+
+  a { color: inherit;
+    text-decoration: none; }
+  #navbardiv{
+    text-align: center;
+    }
+
+.navbar-nav {
+    display: flex;
+    height: 100%;
+    align-content: center;
+    align-items: center;
+    float: none !important;
+}
+
+.navbar-collapse.collapse a {
+    text-align: center;
+    color: white;
+    display: inline;
+    font-size: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.navbar-collapse.collapse {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+}
+
+.log-in-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btns {
+    background-color: #9975F7;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+input {
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.butresults {
+    background-color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0px 0px 0px 6px;
+    border-color: #9975F7;
+    cursor: pointer;
+    width: 85%;
+    font-size: 30px;
+    font-family: 'PT Mono', monospace;
+    text-align: left;
+}
+    .butresults:hover {
+        color: #3b1a91;
+    }
+        .butresults:hover #resicon {
+            color: black;
+        }
+#forumpostback {
+    background: linear-gradient( rgba(35, 115, 171, 0.21), rgba(35, 115, 171, 0.21) ), url(/images/green-chameleon-176136-unsplash.jpg);
+    background-size: cover;
+    text-align: center;
+}
+#library {
+    background: rgba(197, 175, 255, 0.2);
+    background-size: auto;
+}
+#resourceslink {
+    text-decoration: none;
+}
+.resicon {
+    margin-right: 10px;
+}
+#resheading, #resub, #reslab {
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
+    color: #0f032d;
+}
+#resheading{
+    font-size: 35px;
+}
+#reslab {
+    font-size: 33px;
+}
+#backbut {
+    background-color: #d63939;
+    font-family: 'PT Mono', monospace;
+    font-weight: bold;
+}
+.butforum {
+    background-color: white;
+    padding: 14px 20px;
+    margin: 8px 0px 10px 150px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0px 0px 0px 6px;
+    border-color: black;
+    cursor: pointer;
+    width: 60%;
+    font-size: 24px;
+    font-family: Roboto;
+    text-align: left;
+}
+.ar {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+.fileresults {
+    background-color: white;
+    padding: 14px 20px;
+    margin: 8px;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 0px 0px 0px 6px;
+    border-color: #75a0f7;
+    cursor: pointer;
+    width: 75%;
+    font-size: 24px;
+    font-family: 'PT Mono', monospace;
+    text-align: left;
+}
+#forumcontent {
+    font-family: 'Open Sans', sans-serif;
+    font-size:24px;
+}
+#forumtitle {
+    font-family: 'PT Mono', monospace;
+    font-size: 25px;
+}
+#threadpostbut {
+    background-color: black;
+    font-size: 35px;
+    font-weight: bold;
+    font-family: Roboto;
+}
+#forumlogo {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    color: black;
+}
+
+.daform {
+    width: 500px;
+    font-family: 'PT Mono', monospace;
+    font-size: 19px;
+}
+.final {
+    background-color: #6468D6;
+    font-size: 20px;
+}
+.butsec {
+    font-size: 16px;
+    font-family: 'PT Mono', monospace;
+    background-color: #4581a0;
+}
+#msg {
+    display: inline;
+
+}
+
+#discussion {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 19px;
+    text-align: left;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+    flex: 1;
+
+}
+    #discussion:hover {
+        overflow-y: scroll;
+    }
+
+#chatbox {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-height: 500px;
+    border-left: solid 1px black;
+    padding: 0 5px;
+    height: 500px;
+    margin-top: 20px;
+    text-align:center;
+
+}
+
+.send-line {
+    display: flex;
+}
+
+.send-line #message {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.video-chat-wrapper {
+    display: flex;
+    height: 80vh;
+}
+
+.video-js {
+    width: 55% !important;
+    height: auto !important;
+}
+.forumform {
+    width: 50vw;
+    height: 6vh;
+    text-align: left;
+    font-family:'Blogger Sans';
+    font-size:25px;
+}
+#forumf {
+    display: inline-block;
+    text-align: center;
+    margin-top: 60px;
+}
+.forumsubmit {
+    width: 50vw;
+    height: 60vh;
+    resize: none;
+    font-family: 'Blogger Sans';
+    font-size: 25px;
+}
+#fsub {
+    height: 30vh;
+}
+#comments {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+    text-align:left;
+    padding: 10px;
+    margin-left:25vw;
+}
+#sub {
+    font-size: 22px;
+    background-color: black;
+}
+#livestream {
+    border-style: solid;
+    border-color: #6468D6;
+    border-width: 0px 0px 10px 0px;
+    margin: 0 auto;
+}
+#sendmessage {
+    background-color: black;
+    font-size: 16px;
+}
+#subbut {
+    background-color: black;
+    font-size: 24px;
+}
+.facebutton {
+    background-color: #3b5998;
+    font-size: 19px;
+}
+#threadlink {
+    text-decoration:none;
+}
+#forumside{
+    background-color: white;
+    border-radius: 10px;
+    float: right;
+    width: 450px;
+    height: 450px;
+    margin-right: 10px;
+    margin-top: 15px;
+}
+#delbut {
+    background-color: #ce3535;
+    font-size: 18px;
+    font-weight: bold;
+}
+.anotext {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 26px;
+    margin: 10px;
+}
+.coolpic {
+    width: 98.5vw;
+    height: 400px;
+
+}
+#lpic {
+    background: linear-gradient( rgba(100, 104, 214, 0.13), rgba(100, 104, 214, 0.13)),url(../images/photo-1472173148041-00294f0814a2.jpg);
+    background-size: cover;
+}
+#homepic {
+    background: linear-gradient( rgba(0,0,0, 0.13), rgba(0,0,0, 0.13)),url(../images/nav.jpg);
+    background-size: cover;
+}
+#idk {
+    background-color: #e3eaf4;
+}
+.au {
+    margin-top: 15px;
+    background-color: blue;
+    text-decoration: none;
+}

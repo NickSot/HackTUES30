@@ -1,0 +1,24 @@
+﻿@model PostDetailsViewModel
+
+<h1 id="forumtitle">@Model.Name</h1>
+<br />
+ <p id="forumcontent">@Model.Content</p>
+<br />
+
+
+<form action="/forum/comments/add" method="post">
+    <input type="hidden" name="postId" value="@Model.Id" />
+    <input type="hidden" name="username" value="@Model.Name" />
+    <textarea name="Content" class="forumsubmit" id="fsub"></textarea>
+    <br />
+    <button type="submit" name="submit" value="Submit" class="btns" id="sub">Submit</button>
+</form>
+    <h3>Comments:</h3>
+<div>
+    @foreach (var comment in Model.Comments)
+    {
+        <div id="comments"><i class="fas fa-rocket resicon"></i>@comment.Content</div>
+    }
+</div>
+
+<!--<center><a href="/forum/posts/comments/details/@Model"><button class="foreachs">Comment!</button></a></center>-->
